@@ -45,7 +45,7 @@ function hash_size( hash ) = assert( is_list(hash) ) len(hash);
 //
 // Returns true if <hash> is empty.
 //
-function hash_is_empty( hash ) = len(hash) == 0;
+function hash_is_empty( hash ) = assert( is_list(hash) ) len(hash) == 0;
 
 // hash_keys:
 //
@@ -63,8 +63,13 @@ function hash_values( hash ) = assert( is_list(hash) ) [ for( i = hash ) i[1] ];
 //
 // Returns the value associated with key <key> from <hash> or undef if it does not exist.
 //
-function hash_get_internal_( hash, key, _i = 0 ) = (_i >= len(hash)) ? undef : (hash[_i][0] == key) ? hash[_i][1] : hash_get_internal_( hash, key, _i+1 );
-function hash_get( hash, key ) = assert( is_list(hash) ) hash_get_internal_( hash, key );
+function hash_get( hash, key ) = assert( is_list(hash) ) [ for( i = hash ) if( key == i[0] ) i[1] ][0];
+
+// hash_exists:
+//
+// Returns true if the key <key> exists in <hash>.
+//
+function hash_exists( hash, key ) = assert( is_list(hash) ) len( [ for( i = hash ) if( key == i[0] ) true ] ) != 0;
 
 // hash_get_default:
 //
@@ -78,18 +83,11 @@ function hash_get_default( hash, key, default_value ) = hash_exists( hash, key )
 //
 function hash_get_default_hash( hash, key, default_hash ) = hash_exists( hash, key ) ? hash_get( hash, key ) : hash_get( default_hash, key ); 
 
-// hash_exists:
-//
-// Returns true if the key <key> exists in <hash>.
-//
-function hash_exists( hash, key ) = !is_undef( hash_get( hash, key ) );
-
 // hash_delete:
 //
 // Deletes key <key> from <hash> if it exists and returns the new hash.
 //
-function hash_delete_internal_( hash, key, _i = 0, _v = [] ) = (_i >= len(hash)) ? _v : hash_delete_internal_( hash, key, _i+1, hash[_i][0] == key ? _v : concat(_v,[hash[_i]]) );
-function hash_delete( hash, key ) = assert( is_list(hash) ) hash_delete_internal_( hash, key );
+function hash_delete( hash, key ) = assert( is_list(hash) ) [ for( i = hash ) if( key != i[0] ) i ];
 
 // hash_set:
 //
