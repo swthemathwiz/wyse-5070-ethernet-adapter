@@ -27,7 +27,7 @@ mount_radius = mount_hole_radius*1.75;
 // Mounting countersink (Failed: amount of space too small for screws)
 mount_countersink = false;
 
-// Mount use nubs instead of holes (Failed: print as a mess, so somewhat useless)
+// Mount use nubs instead of holes (Failed: prints as a mess, so somewhat useless)
 mount_use_nubs = false;
 
 // Support thickness
@@ -53,8 +53,8 @@ config = [
 // Trough indent from sides [front,rear,left,right]
 trough_indent_size = (nic_kind() == "realtek") ? [1.5, 7.5, 1.5, 1.5] : [1.6, 7.2, 4.4, 4.4];
 
-// Rear snap length
-rear_snap_length = 16;
+// Rear snap width 
+rear_snap_width = 16;
 
 // Side guide width
 side_guide_width = 1;
@@ -115,10 +115,10 @@ module latches() {
   //
   // Just behind the PCB board, in the center.
   //
-  if( rear_snap_length != 0 ) {
+  if( rear_snap_width != 0 ) {
     rear_pos = midfront_of( [ nic_get_pcb_size().x/2, -tolerance.y, z_height ] );
 
-    Wyse_Latch( config, rear_pos, rear_snap_length, 1.00, style="tang2" );
+    Wyse_Latch( config, rear_pos, rear_snap_width, 1.00, style="tang2" );
   }
 
   // Front (non-moving)
