@@ -4,23 +4,47 @@
 // File:    hash.scad
 // Project: General
 // License: CC BY-NC-SA 4.0 (Attribution-NonCommercial-ShareAlike)
-// Desc:    Implementation of a hash structure.
+// Desc:    Implementation of a hash associative array.
 //
 
 // hash can be initialized like:
 //
-//   hash_v = hash_add( hash_add( hash_initialize(), "key1", "value1" ), "key2", value2 );
+//   config = hash_add( hash_add( hash_add( hash_initialize(), "first_name", "Bob" ), "last_name", "Doe" ), "age", 50 );
 //
 // or perhaps more clearly like:
 //
-//   hash_v = [
-//     [ "key1", "value1" ],
-//     [ "key2", value2 ],
+//   config = [
+//     [ "first_name", "Bob" ],
+//     [ "last_name", "Doe" ],
+//     [ "age", 50 ],
 //   ];
 //
 // Then values can be retrieved by:
 //
-//   v = hash_get( hash_v, "key1" );
+//   echo( hash_get( config, "first_name" ) ) -> "Bob"
+//
+// Default values can be obtained as follows if the key is missing from the hash:
+//
+//   echo( hash_get_default( config, "age", 0 ) ) -> 50
+//   echo( hash_get_default( config, "occupation", "unknown" ) ) -> "unknown"
+//
+// Or, you can have an entire hash of default values to fallback on:
+//
+//   default_config = [
+//     [ "first_name", "none" ],
+//     [ "last_name", "none" ],
+//     [ "age", 0 ],
+//     [ "occupation", "unemployed" ],
+//   ];
+//
+//   echo( hash_get_default_hash( config, "age", default_config ) ) -> 50
+//   echo( hash_get_default_hash( config, "occupation", default_config ) ) -> "unemployed"
+//
+// Functions like 'hash_set' and 'hash_delete' require you to assign the result
+// to a new variable, since openscad does not have true variables.
+//
+//   anon_config = hash_delete( hash_delete( config, "first_name" ), "last_name" );
+//   echo( hash_exists( anon_config, "first_name" ) ) -> false
 //
 
 // hash_initialize:
