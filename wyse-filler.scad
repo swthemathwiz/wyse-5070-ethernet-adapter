@@ -4,7 +4,7 @@
 // File:    wyse-filler.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
 // License: CC BY-NC-SA 4.0 (Attribution-NonCommercial-ShareAlike)
-// Desc:    Blank with Cutouts for the Realtek NIC Dautherboard
+// Desc:    Blank to fill an uncovered slot
 //
 
 use <wyse-blank.scad>
