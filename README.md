@@ -9,9 +9,9 @@ is a Intel I210-AT 2230 M.2 A/E card that fits in the Wifi/2nd Ethernet slot of 
 half way along the length. I also filed down the solder tabs on the ethernet jack at the bottom of the PCB.
 
 There is code for the [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178), which is a Realtek RTL-8111H 2230 M.2 A/E card, which
-*did not work* on the 5070 for me. The card was not recognized in the BIOS or by the OS. I only had one sample, so perhaps this was
+**did not work** on the 5070 for me. The card was not recognized in the BIOS or by the OS. I only had one sample, so perhaps this was
 a product issue (it is a relatively new product). The other problem with this card is
-that *the cable + connector combination prevent the case from being shut*, so you would need to replace the connectors on
+that **the cable + connector combination prevent the case from being shut**, so you would need to replace the connectors on
 the daughter board with their right angle equivalents.
 
 ## Building
