@@ -9,42 +9,46 @@
 
 // hash can be initialized like:
 //
-//   config = hash_add( hash_add( hash_add( hash_initialize(), "first_name", "Bob" ), "last_name", "Doe" ), "age", 50 );
+//   config = hash_add( hash_add( hash_add( hash_add( hash_initialize(), "first_name", "Bob" ), "last_name", "Doe" ), "age", 50 ), "kids", [ "Jane", "John" ] );
 //
-// or perhaps more clearly like:
+// or perhaps more simply like:
 //
 //   config = [
 //     [ "first_name", "Bob" ],
 //     [ "last_name", "Doe" ],
 //     [ "age", 50 ],
+//     [ "kids", [ "Jane", "John" ] ],
 //   ];
 //
 // Then values can be retrieved by:
 //
-//   echo( hash_get( config, "first_name" ) ) -> "Bob"
+//   echo( hash_get( config, "first_name" ) ); // -> "Bob"
 //
 // Default values can be obtained as follows if the key is missing from the hash:
 //
-//   echo( hash_get_default( config, "age", 0 ) ) -> 50
-//   echo( hash_get_default( config, "occupation", "unknown" ) ) -> "unknown"
+//   echo( hash_get_default( config, "age", 0 ) ); // -> 50
+//   echo( hash_get_default( config, "occupation", "unknown" ) ); // -> "unknown"
 //
 // Or, you can have an entire hash of default values to fallback on:
 //
 //   default_config = [
 //     [ "first_name", "none" ],
 //     [ "last_name", "none" ],
-//     [ "age", 0 ],
-//     [ "occupation", "unemployed" ],
+//     [ "age", -1 ],
+//     [ "occupation", "unknown" ],
+//     [ "kids", [] ],
 //   ];
 //
-//   echo( hash_get_default_hash( config, "age", default_config ) ) -> 50
-//   echo( hash_get_default_hash( config, "occupation", default_config ) ) -> "unemployed"
+//   echo( hash_get_default_hash( config, "age", default_config ) ); // -> 50
+//   echo( hash_get_default_hash( config, "occupation", default_config ) ); // -> "unknown"
 //
-// Functions like 'hash_set' and 'hash_delete' require you to assign the result
+// Functions like 'hash_set' and 'hash_delete' require you to assign the returned result
 // to a new variable, since openscad does not have true variables.
 //
 //   anon_config = hash_delete( hash_delete( config, "first_name" ), "last_name" );
-//   echo( hash_exists( anon_config, "first_name" ) ) -> false
+//   echo( hash_exists( anon_config, "first_name" ) ); // -> false
+//
+// Most of the other functions are obvious.
 //
 
 // hash_initialize:
@@ -57,7 +61,7 @@ function hash_initialize() = [];
 //
 // Adds <key>:<value> to <hash>. This does not check for duplicates. Use hash_set to remove duplicates.
 //
-function hash_add( hash, key, value ) = assert( is_list(hash) ) concat( hash, [[key, value]] );
+function hash_add( hash, key, value ) = assert( is_list(hash) ) is_undef(key) ? hash : concat( hash, [[key, value]] );
 
 // hash_size:
 //
@@ -87,13 +91,13 @@ function hash_values( hash ) = assert( is_list(hash) ) [ for( i = hash ) i[1] ];
 //
 // Returns the value associated with key <key> from <hash> or undef if it does not exist.
 //
-function hash_get( hash, key ) = assert( is_list(hash) ) [ for( i = hash ) if( key == i[0] ) i[1] ][0];
+function hash_get( hash, key ) = assert( is_list(hash) ) hash[ search( [key], hash, 1, 0 )[0] ][1];
 
 // hash_exists:
 //
 // Returns true if the key <key> exists in <hash>.
 //
-function hash_exists( hash, key ) = assert( is_list(hash) ) len( [ for( i = hash ) if( key == i[0] ) true ] ) != 0;
+function hash_exists( hash, key ) = assert( is_list(hash) ) search( [key], hash, 1, 0 ) != [[]];
 
 // hash_get_default:
 //
