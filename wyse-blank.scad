@@ -57,7 +57,7 @@ default_config = [
   ["trough_round_over", default_trough_round_over],
   ["front_cut", default_front_cut],
 ];
-function GV_(config,var) = assert( is_list(config) ) hash_get_default_hash( config, var, default_config );
+function GV_(config,var) = hash_get_default_hash( config, var, default_config );
 
 function Wyse_Get_Raw_Depth() = raw_depth;
 
@@ -145,6 +145,7 @@ module Wyse_Nub( config, pos, radius, height, percent=50) {
 // Position a latch
 module Wyse_Latch( config, pos, width, latch_size=1, style="tang" ) {
   assert( style == "cylinder" || style == "triangle" || style == "square" || style == "tang" || style == "tang2" );
+
   thickness = GV_(config,"thickness");
 
   p = [ pos.x, pos.y, thickness ];
@@ -217,7 +218,7 @@ module Wyse_Trough( config, indent_size, round_over=undef, trough_thickness=unde
 // Extra depth (Completely depends on adapter)
 module Wyse_Blank( config=[], filler_only=false ) {
 
-  function V_(key) = assert(is_list(config)) hash_get_default_hash( config, key, default_config );
+  function V_(key) = hash_get_default_hash( config, key, default_config );
 
   extra_depth = V_("extra_depth");
   baffle_height = V_("baffle_height");
@@ -276,7 +277,7 @@ module Wyse_Blank( config=[], filler_only=false ) {
 
   // Hole radius for sized for M3 mounting screws
   // Diameter is about 3mm, head size is about 6.25mm
-  ear_hole_radius = 3.8/2;
+  ear_hole_radius = 3.6/2;
   ear_hole_recess_radius = 4;
   // Recess thickness is based on there needing at least 1mm to clamp, or recess of 1mm to conceal screw head
   ear_hole_recess_thickness = upside_down ? 0 : ((ear_thickness > 2) ? 1 : ear_thickness-1);
