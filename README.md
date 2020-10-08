@@ -11,26 +11,26 @@ half way along the length. I also filed down the solder tabs on the ethernet jac
 There is code for the [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178), which is a Realtek RTL-8111H 2230 M.2 A/E card, which
 **did not work** on the 5070 for me. The card was not recognized in the BIOS or by the OS. I only had one sample, so perhaps this was
 a product issue (it is a relatively new product). The other problem with this card is
-that **the cable + connector combination prevent the case from being shut**, so you would need to replace the connectors on
+**the cable & connector combination prevents the case from being closed**, so you would need to replace the connectors on
 the daughter board with their right angle equivalents.
 
 ## Building
 
 I used an Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura, you need _Support_ on, with the support placement
-set to _Touching Buildplate_ only. Support should be used only under the wings that take screws for the computer; check that
-not support is built under the latches used to secure the daughter board on the inside of the adapter.
+set to _Touching Buildplate_ only. Support should be used only under the wings that take screws for the computer; in particular, check that
+no support is built under the latch tangs used to secure the daughter board PCB inside of the adapter.
 
 ## Installing
 
-To install the card in the adapter, slid the card down and under the front latches (small horizontal bars at the front of the
-adapter) and the top of the ethernet jack under the opening then pull back on the rear latch and push the PCB down. The
+To install the card in the adapter, slid the daughter board PCB down and under the front latches (small horizontal bars at the front of the
+adapter) and fit the top of the ethernet jack under the panel opening then pull back on the rear latch and push the PCB down. The
 PCB should be seated firmly with minimal play.
 
-I didn't put any screws in to the card; there doesn't seem to be enough space to apply both screws - space is that
-tight. If there is no 3rd display port (on the J4105 I believe), then you can easily use one screw with a thin head
-with a nut on the inside of the adapter. 
+I didn't put any screws in to the PCB; there doesn't seem to be enough space to apply both screws - space is that
+tight. If there is no 3rd display port (I think J4105's have 2 DPs / J5005's have 3 DPs), then you can easily use one M3 screw with a thin head
+and a nut inside the adapter. 
 
-Install the cable on the daughter board before putting the adapter in the 5070.
+Install the cable connecting the daughter board before putting the adapter in the 5070.
 
 Screw two reasonably-short M3 thin (_wafer_) head screws into the 5070 through the _wings_ of the adapter.
 
