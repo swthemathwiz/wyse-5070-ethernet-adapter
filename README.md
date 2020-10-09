@@ -20,13 +20,13 @@ I would like to know if there are other (especially cheaper) working cards.
 
 The adapter is built using Openscad. _wyse-ethernet.scad_ is the main file for the
 adapter. It customizes a blank using information from the appropriate
-_XXX_nic.scad_ NIC file.
+*XXX_nic.scad* NIC file.
 
 If you find the fit too tight, or the dimensions of the PCB have changed, you
 might wish to change the _tolerance_ settings in the main file, or the corresponding dimensions in
 the appropriate NIC files. I only had one adapter to test against, so I don't know how
 accurate the measurements are. I also had to modify some of the measurements from those
-based on the manual, so there may be other versions of the cards.
+found in the manual, so there may be other versions of the cards.
 
 You can also build a simple blank that blocks off an empty I/O slot from the _wyse-filler.scad_.
 
@@ -51,3 +51,6 @@ Install the cable connecting the daughter board before putting the adapter into 
 Screw two reasonably-short M3 thin (_wafer_) head screws into the 5070 through the _wings_ of the adapter.
 
 Check that you can close the case.
+
+## Also Available on Thingiverse
+https://www.thingiverse.com/thing:4619323
