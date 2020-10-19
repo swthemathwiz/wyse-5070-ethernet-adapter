@@ -53,7 +53,7 @@ config = [
 // Trough indent from sides [front,rear,left,right]
 trough_indent_size = (nic_kind() == "realtek") ? [1.5, 7.5, 1.5, 1.5] : [1.6, 7.2, 4.4, 4.4];
 
-// Rear snap width 
+// Rear snap width
 rear_snap_width = 16;
 
 // Side guide width
@@ -64,7 +64,7 @@ use_side_guides = (nic_get_pcb_size().x < (Wyse_Get_Interior_Width(config) - sid
 
 // midfront_of:
 //
-// Translate NIC's X-/Y-coordinates from model to origin centered at mid-width (X-mirrored) and PCB-front (Y) 
+// Translate NIC's X-/Y-coordinates from model to origin centered at mid-width (X-mirrored) and PCB-front (Y)
 //
 function midfront_of(v) = (len(v) == 2) ? [-(v.x-nic_get_pcb_size().x/2),nic_get_pcb_size().y-v.y] : [-(v.x-nic_get_pcb_size().x/2),nic_get_pcb_size().y-v.y,v.z];
 
@@ -82,7 +82,7 @@ tolerance = [0.25, 0.25, 0.3];
 
 module ethernet(pos,size) {
   // Use the same tolerance all the way around
-  port_tolerance = max(tolerance.x,tolerance.z); 
+  port_tolerance = max(tolerance.x,tolerance.z);
 
   // Cutout a rectangular port space with tolerance
   Wyse_Baffle_Cutout( config, pos )
@@ -146,7 +146,7 @@ module latches() {
   //
   if( use_side_guides ) {
     corner_position = nic_get_pcb_size().x/2+tolerance.x;
-    guide_size      = [ side_guide_width, nic_get_pcb_size().y*0.75, mount_height+nic_get_pcb_size().z+2*tolerance.z ]; 
+    guide_size      = [ side_guide_width, nic_get_pcb_size().y*0.75, mount_height+nic_get_pcb_size().z+2*tolerance.z ];
 
     Wyse_Guide( config, [ -corner_position, nic_get_pcb_size().y*0.125 ], guide_size );
     Wyse_Guide( config, [ +corner_position, nic_get_pcb_size().y*0.125 ], guide_size );
@@ -154,7 +154,7 @@ module latches() {
 } // end latches
 
 module trough() {
-  Wyse_Trough( config, trough_indent_size ); 
+  Wyse_Trough( config, trough_indent_size );
 } // end trough
 
 module holder() {

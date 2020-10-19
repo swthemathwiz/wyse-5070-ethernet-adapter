@@ -32,10 +32,10 @@ function nic_kind() = "commell";
 //
 // Measured thickness is ~1.57mm (nominal 4-layer PCB thickness). This board
 // seems a little thicker. Width is measured to perforation.
-// 
+//
 // The manual says 0.8331 inches depth, but it measures around 0.855, so I
 // have changed that.
-// 
+//
 function nic_get_pcb_size() = [ inches_to_mm(1.24), inches_to_mm(0.855), 1.60 ];
 
 // hole positions [from left=0, rear=0]

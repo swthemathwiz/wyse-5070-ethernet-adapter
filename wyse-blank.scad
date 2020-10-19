@@ -121,7 +121,7 @@ module Wyse_Hole( config, pos, radius, extra_height=0, countersink=false) {
 
   if( countersink ) {
     m_radius = min( radius+h, radius*2 );
-    translate( p ) cylinder( h=m_radius, r1=m_radius, r2=0 ); 
+    translate( p ) cylinder( h=m_radius, r1=m_radius, r2=0 );
   }
 } // end Wyse_Hole
 
@@ -185,8 +185,8 @@ module Wyse_Latch( config, pos, width, latch_size=1, style="tang" ) {
 // Position a guide parallel to the edge of the board
 module Wyse_Guide( config, pos, size ) {
   thickness = GV_(config,"thickness");
-  p = concat( pos, thickness ); 
-  translate( p + [p.x < 0 ? -size.x : 0, 0, 0] ) cube( size ); 
+  p = concat( pos, thickness );
+  translate( p + [p.x < 0 ? -size.x : 0, 0, 0] ) cube( size );
 } // end Wyse_Guide
 
 // Cut a trough in the floor. Indent size is [front,rear,left,right]
@@ -203,7 +203,7 @@ module Wyse_Trough( config, indent_size, round_over=undef, trough_thickness=unde
     indent_depth = indent_size[0]+indent_size[1]; // Front + Rear
     indent_width = indent_size[2]+indent_size[3]; // Left + Right
 
-    v = concat( interior_size - [indent_width, indent_depth], cut_thickness+2*SMIDGE ); 
+    v = concat( interior_size - [indent_width, indent_depth], cut_thickness+2*SMIDGE );
 
     color( "silver" )
       translate( [-interior_size.x/2+indent_size[2], indent_size[0], thickness - cut_thickness - SMIDGE ] )
@@ -349,7 +349,7 @@ module Wyse_Blank( config=[], filler_only=false ) {
 
     gusset_height = multiplier * width;
 
-    pos = [0, baffle_thickness, thickness + baffle_height*percent/100 - gusset_height ]; 
+    pos = [0, baffle_thickness, thickness + baffle_height*percent/100 - gusset_height ];
 
     translate( [ support_thickness, 0, 0 ] + pos ) gusset(width,gusset_height,center=false);
     translate( [ inner_width-support_thickness, 0, 0 ] + pos ) rotate([0,0,90]) gusset(width,gusset_height,center=false);
@@ -359,7 +359,7 @@ module Wyse_Blank( config=[], filler_only=false ) {
     h = front_cut[1];
     w = front_cut[0];
     translate( [-SMIDGE, -SMIDGE, -SMIDGE ] ) {
-      translate( [0,0,h-w] ) right_triangle( w, w, inner_width+2*SMIDGE ); 
+      translate( [0,0,h-w] ) right_triangle( w, w, inner_width+2*SMIDGE );
       cube( [ inner_width+2*SMIDGE, w+2*SMIDGE, (h-w)+2*SMIDGE ] );
     }
   } // end frontcut

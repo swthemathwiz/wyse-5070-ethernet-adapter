@@ -79,13 +79,13 @@ function hash_is_empty( hash ) = assert( is_list(hash) ) len(hash) == 0;
 //
 // Return the keys of <hash> in an array.
 //
-function hash_keys( hash ) = assert( is_list(hash) ) [ for( i = hash ) i[0] ]; 
+function hash_keys( hash ) = assert( is_list(hash) ) [ for( i = hash ) i[0] ];
 
 // hash_values:
 //
 // Return the values of <hash> in an array.
 //
-function hash_values( hash ) = assert( is_list(hash) ) [ for( i = hash ) i[1] ]; 
+function hash_values( hash ) = assert( is_list(hash) ) [ for( i = hash ) i[1] ];
 
 // hash_get:
 //
@@ -103,13 +103,13 @@ function hash_exists( hash, key ) = assert( is_list(hash) ) search( [key], hash,
 //
 // Returns the value associated with key <key> from <hash> or <default_value> if it does not exist.
 //
-function hash_get_default( hash, key, default_value ) = hash_exists( hash, key ) ? hash_get( hash, key ) : default_value; 
+function hash_get_default( hash, key, default_value ) = hash_exists( hash, key ) ? hash_get( hash, key ) : default_value;
 
 // hash_get_default_hash:
 //
 // Returns the value associated with key <key> from <hash>, falling back to <default_hash> if it does not exist.
 //
-function hash_get_default_hash( hash, key, default_hash ) = hash_exists( hash, key ) ? hash_get( hash, key ) : hash_get( default_hash, key ); 
+function hash_get_default_hash( hash, key, default_hash ) = hash_exists( hash, key ) ? hash_get( hash, key ) : hash_get( default_hash, key );
 
 // hash_delete:
 //
