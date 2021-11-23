@@ -1,5 +1,5 @@
 #
-# Copyright (c) Stewart Whitman, 2020.
+# Copyright (c) Stewart Whitman, 2020-2021.
 #
 # File:    Makefile
 # Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -12,13 +12,17 @@ OPENSCAD = openscad
 SRCS = \
 	commell-nic.scad \
 	realtek-nic.scad \
+	winyao-nic.scad \
 	primitives.scad \
 	smidge.scad \
 	hash.scad \
-	wyse-blank.scad
+	wyse-blank.scad \
+	wyse-ethernet.scad
 
 BUILDS = \
-	wyse-ethernet.scad \
+	wyse-commell-adapter.scad \
+	wyse-winyao-adapter.scad \
+	wyse-realtek-adapter.scad \
 	wyse-filler.scad
  
 TARGETS = $(BUILDS:.scad=.stl)
