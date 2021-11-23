@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020.
+// Copyright (c) Stewart H. Whitman, 2020-2021.
 //
 // File:    wyse-blank.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -81,12 +81,23 @@ module Wyse_Baffle_Cutout( config, pos ) {
   baffle_thickness = GV_(config,"baffle_thickness");
   thickness = GV_(config,"thickness");
 
-  SMIDGE=0.001;
+  SMIDGE = 0.01;
   color("yellow" )
     translate( [pos.x, -baffle_thickness-SMIDGE, thickness+pos.y] )
       rotate( [90,0,180] )
-        linear_extrude( baffle_thickness+2*SMIDGE ) children();
+        linear_extrude( baffle_thickness+2*SMIDGE )
+          children();
 } // end Wyse_Baffle_Cutout
+
+// Cutout the 3-dimension children from the baffle
+module Wyse_Baffle_Indent( config, pos ) {
+  thickness = GV_(config,"thickness");
+
+  color("pink" )
+    translate( [pos.x, +SMIDGE, thickness+pos.y] )
+      rotate( [0,0,180] )
+        children();
+} // end Wyse_Baffle_Indent
 
 // Position a mount
 module Wyse_Mount( config, pos, radius, extra_height=0, simple=false ) {
@@ -124,23 +135,6 @@ module Wyse_Hole( config, pos, radius, extra_height=0, countersink=false) {
     translate( p ) cylinder( h=m_radius, r1=m_radius, r2=0 );
   }
 } // end Wyse_Hole
-
-// Position a nub
-module Wyse_Nub( config, pos, radius, height, percent=50) {
-  assert( percent >= 0 && percent <= 100 );
-
-  thickness = GV_(config,"thickness");
-
-  p = concat( pos, 0 );
-
-  h_per   = percent/100;
-  h_cyl   = thickness+h_per*height;
-  h_cone  = (1-h_per)*height;
-
-  translate( p ) cylinder( h_cyl, r=radius );
-  if( h_cone > 0 )
-    translate( p + [0,0,h_cyl] ) cylinder( h_cone, r1=radius, r2=0 );
-} // end Wyse_Nub
 
 // Position a latch
 module Wyse_Latch( config, pos, width, latch_size=1, style="tang" ) {
