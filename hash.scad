@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020.
+// Copyright (c) Stewart H. Whitman, 2020-2021.
 //
 // File:    hash.scad
 // Project: General
