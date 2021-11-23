@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020.
+// Copyright (c) Stewart H. Whitman, 2020-2021.
 //
 // File:    commell-nic.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -38,9 +38,12 @@ function nic_kind() = "commell";
 //
 function nic_get_pcb_size() = [ inches_to_mm(1.24), inches_to_mm(0.855), 1.60 ];
 
-// hole positions [from left=0, rear=0]
-function nic_get_left_hole() = [ inches_to_mm(0.1873), nic_get_pcb_size().y - inches_to_mm(0.1770)];
-function nic_get_right_hole() = [ inches_to_mm(1.0993), nic_get_pcb_size().y - inches_to_mm(0.1770)];
+// bottom hole positions [from left=0, rear=0]
+function _nic_get_left_hole() = [ inches_to_mm(0.1873), nic_get_pcb_size().y - inches_to_mm(0.1770)];
+function _nic_get_right_hole() = [ inches_to_mm(1.0993), nic_get_pcb_size().y - inches_to_mm(0.1770)];
+function nic_get_bottom_holes() = [ _nic_get_left_hole(), _nic_get_right_hole() ];
+// bottom hole diameter (M3x0.5)
+function nic_get_bottom_hole_diameter() = 3.0;
 
 // ethernet size [left<->right,front<->rear,top<->bottom]
 //
@@ -56,20 +59,25 @@ function nic_get_ethernet_size() = [ inches_to_mm(0.650), 16.00, inches_to_mm(0.
 //  implies spacing of ~0.35 around sides of the port cut out
 //
 
-// ethernet measures 8.25mm from left side
-function nic_get_ethernet_left_pos() = inches_to_mm(0.3126) ;
-function nic_get_ethernet_right_pos() = nic_get_ethernet_left_pos()+nic_get_ethernet_size().x;
-function nic_get_ethernet_center_pos() = (nic_get_ethernet_left_pos()+nic_get_ethernet_right_pos())/2;
+// ethernet position measures 8.25mm from left side
+function _nic_get_ethernet_left_pos() = inches_to_mm(0.3126) ;
+function _nic_get_ethernet_right_pos() = _nic_get_ethernet_left_pos()+nic_get_ethernet_size().x;
+function _nic_get_ethernet_bottom_pos() = nic_get_pcb_size().z;
+function nic_get_ethernet_center_pos() = [ (_nic_get_ethernet_left_pos()+_nic_get_ethernet_right_pos())/2, _nic_get_ethernet_bottom_pos() + nic_get_ethernet_size().z/2 ];
 function nic_get_ethernet_projection() = 7.25 + nic_get_ethernet_size().y - nic_get_pcb_size().y; // Measured Overhang ~2mm
 
-// hole diameter (M3x0.5)
-function nic_get_hole_diameter() = 3.0;
+// shield (none)
+function nic_get_shield_thickness() = 0;
+function nic_get_shield_size() = [];
+function nic_get_shield_hole_diameter() = 0;
+function nic_get_shield_holes() = [];
+function nic_get_shield_center_pos() = [ 0, 0 ];
 
 // Layout of the nic board (PCB centered with NIC port hanging out)
-module nic(transparency=1.0,center=true) {
+module nic(transparency=1.0,center=true,with_shield=true) {
 
   module hole() {
-    translate( [0,0,-SMIDGE] ) cylinder( h = nic_get_pcb_size().z+2*SMIDGE, d=nic_get_hole_diameter() );
+    translate( [0,0,-SMIDGE] ) cylinder( h = nic_get_pcb_size().z+2*SMIDGE, d=nic_get_bottom_hole_diameter() );
   } // end hole
 
   // PCB with notch and hole
@@ -78,20 +86,19 @@ module nic(transparency=1.0,center=true) {
       difference() {
 	// board
 	cube( nic_get_pcb_size() );
-	// left hole
-	translate( concat( nic_get_left_hole(), 0 ) ) hole();
-	// right hole
-	translate( concat( nic_get_right_hole(),0 ) ) hole();
+        // holes
+        for( h = nic_get_bottom_holes() )
+	  translate( concat( h, 0 ) ) hole();
       }
   } // end pcb
 
   module ethernet() {
     color( "silver", transparency )
-      translate( [nic_get_ethernet_left_pos(),7.0,nic_get_pcb_size().z] ) cube( nic_get_ethernet_size() );
+      translate( [_nic_get_ethernet_left_pos(),7.0,nic_get_pcb_size().z] ) cube( nic_get_ethernet_size() );
     color( "black", transparency ) {
       h = 3.30;
-      translate( [nic_get_ethernet_left_pos()+1.8,nic_get_pcb_size().y-3.75,nic_get_pcb_size().z-h] ) cylinder( h=h, d=3.00 );
-      translate( [nic_get_ethernet_right_pos()-1.8,nic_get_pcb_size().y-3.75,nic_get_pcb_size().z-h] ) cylinder( h=h, d=3.00 );
+      translate( [_nic_get_ethernet_left_pos()+1.8,nic_get_pcb_size().y-3.75,nic_get_pcb_size().z-h] ) cylinder( h=h, d=3.00 );
+      translate( [_nic_get_ethernet_right_pos()-1.8,nic_get_pcb_size().y-3.75,nic_get_pcb_size().z-h] ) cylinder( h=h, d=3.00 );
     }
   } // end ethernet
 
