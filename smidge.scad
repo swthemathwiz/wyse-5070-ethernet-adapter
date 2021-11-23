@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020.
+// Copyright (c) Stewart H. Whitman, 2020-2021.
 //
 // File:    smidge.scad
 // Project: General
@@ -8,4 +8,4 @@
 //
 
 // Smidge constant for rendering only (to avoid Z-axis fighting, etc.)
-SMIDGE = $preview ? 0.001 : 0;
+SMIDGE = $preview ? 0.01 : 0;
