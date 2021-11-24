@@ -7,6 +7,8 @@
 # Desc:    Makefile for directory 
 #
 
+NAME = wyse-5070-ethernet-adapter
+
 OPENSCAD = openscad
 
 SRCS = \
@@ -24,10 +26,17 @@ BUILDS = \
 	wyse-winyao-adapter.scad \
 	wyse-realtek-adapter.scad \
 	wyse-filler.scad
- 
+
+EXTRAS = \
+	Makefile \
+	README.md \
+	LICENSE.txt
+
 TARGETS = $(BUILDS:.scad=.stl)
 
 IMAGES = $(BUILDS:.scad=.png)
+
+SOURCEZIP = $(NAME)-source.zip
 
 DEPDIR := .deps
 DEPFLAGS = -d $(DEPDIR)/$*.d
@@ -46,8 +55,13 @@ images: $(IMAGES)
 %.png : %.scad
 	$(RENDER.scad) $<
 
+$(SOURCEZIP): $(EXTRAS) $(SRCS) $(BUILDS)
+	(for F in $^; do echo $$F ; done) | zip -@ - > $@
+
+source: $(SOURCEZIP)
+
 clean:
-	rm -f *.stl *.bak *.png
+	rm -f *.stl *.bak *.png $(SOURCEZIP)
 
 distclean: clean
 	rm -rf $(DEPDIR)
