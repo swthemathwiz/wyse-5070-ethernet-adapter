@@ -1,5 +1,5 @@
 # wyse-5070-ethernet-adapter
-This is a 3D-Printable Openscad model of a second ethernet port adapter for the [Dell Wyse 5070 Thin Client](https://www.dell.com/en-us/work/shop/wyse-endpoints-and-software/wyse-5070-thin-client/spd/wyse-5070-thin-client) and various aftermarket M.2 A+E ethernet adapters using the existing option port in the 5070 case.
+This is a 3D-Printable [Openscad](https://openscad.org/) model of a second ethernet port adapter for the [Dell Wyse 5070 Thin Client](https://www.dell.com/en-us/work/shop/wyse-endpoints-and-software/wyse-5070-thin-client/spd/wyse-5070-thin-client) and various aftermarket M.2 A+E ethernet adapters using the existing option port in the 5070 case.
 
 ## Ethernet Cards
 
@@ -29,15 +29,17 @@ I used a Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura, y
 
 ## Installing
 
-To install the card in the adapter, slid the daughter board PCB down and under the front latches (small horizontal bars at the front of the adapter) and fit the top of the ethernet jack under the panel opening then pull back on the rear latch and push the PCB down. The PCB should be seated firmly with minimal play.
+To install the card in the adapter:
 
-I didn't put any screws through the **commell** PCB; there doesn't seem to be enough space to apply both screws - space is that tight below the adapter. In 5070's with no third display port (I think the J4105's have 2 DPs / J5005's have 3 DPs) you can easily use one screw on the lower side and a hex nut on the inside. With the **winyao**, which has a low-profile ethernet jack, I was able to put two M3x6mm thin (_wafer_) head machine screws from the bottom up with hex nuts inside the adapter. 
+- Slid the daughter board PCB down and under the front latches (small horizontal bars at the front of the adapter) and fit the top of the ethernet jack under the panel opening then pull back on the rear latch and push the PCB down. The PCB should be seated firmly with minimal play.
 
-Install the cable connecting the daughter board to the M.2 card (before putting the adapter into the 5070).
+- I didn't put any screws through the **commell** PCB; there doesn't seem to be enough space to apply both screws - space is that tight below the adapter. In 5070's with no third display port (I think the J4105's have 2 DPs / J5005's have 3 DPs) you can easily use one screw on the lower side and a hex nut on the inside. With the **winyao**, which has a low-profile ethernet jack, I was able to put two M3x6mm thin (_wafer_) head machine screws from the bottom up with hex nuts inside the adapter. 
 
-Screw two reasonably-short M3 thin (_wafer_) head machine screws into the 5070 through the _wings_ of the adapter.
+- Install the cable connecting the daughter board to the M.2 card (before putting the adapter into the 5070).
 
-Check that you can close the case.
+- Screw two reasonably-short M3 thin (_wafer_) head machine screws into the 5070 through the _wings_ of the adapter.
+
+- Check that you can close the case.
 
 ## Also Available on Thingiverse
 
