@@ -19,7 +19,7 @@ I would like to know if there are other working cards.
 
 ## Source
 
-The model is built using Openscad. _wyse-XXX-adapter.scad_ is the main file for the adapter, where _XXX_ is the version of the NIC. It customizes a ethernet adapter _wyse-ethernet.scad_ using information from the appropriate _XXX-nic.scad_ NIC file.
+The model is built using Openscad. _wyse-XXX-adapter.scad_ is the main file for each adapter, where _XXX_ is the version of the NIC. It customizes a ethernet adapter _wyse-ethernet.scad_ using information from the appropriate _XXX-nic.scad_ NIC file.
 
 If you find the fit too tight, or the dimensions of the PCB have changed, you might wish to change the _tolerance_ settings in the adapter file, or the corresponding dimensions in the appropriate _XXX-nic.scad_ NIC file. Generally, I had only one adapter to test against, so I don't know how measurements vary from sample to sample. I even had to modify some measurements listed in manuals, so there might be other versions of the product with different components.
 
@@ -29,7 +29,7 @@ Finally, you can also build a simple blank that blocks off an empty I/O slot fro
 
 ## 3D Printing
 
-I used a Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura, you need **_Support_ on**, with **_support placement_ set to _Touching Buildplate_** only. Support should be used only below the two wings that are screwed to the computer; in particular, ensure that no support is added under the various overhanging latch tangs used to secure the daughter board PCB inside the adapter.
+I used a Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura, you need **_Support_ on**, with **_support placement_** set to **_Touching Buildplate_** only. Support should be used only below the two wings that are screwed to the computer; in particular, ensure that no support is added under the various overhanging latch tangs used to secure the daughter board PCB inside the adapter.
 
 ## Installing
 
