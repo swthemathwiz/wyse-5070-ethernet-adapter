@@ -29,13 +29,13 @@ Finally, you can also build a simple blank that blocks off an empty I/O slot fro
 
 ## 3D Printing
 
-I used a Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura, you need **_Support_ on**, with **_support placement_** set to **_Touching Buildplate_** only. Support should be used only below the two wings that are screwed to the computer; in particular, ensure that no support is added under the various overhanging latch tangs used to secure the daughter board PCB inside the adapter.
+I use a Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura, you need **_Generate Support_** checked, with **_Support Placement_** set to **_Touching Buildplate_**. Support should be used only below the two _wings_ that are screwed to the computer; in particular, ensure that no support is added under the various overhanging latch tangs used to secure the daughter board PCB inside the adapter.
 
 ## Installing
 
 To install the card in the adapter:
 
-- Slid the daughter board PCB down and under the front latches (small horizontal bars at the front of the adapter) and fit the top of the ethernet jack under the panel opening then pull back on the rear latch and push the PCB down. The PCB should be seated firmly with minimal play.
+- Slid the daughter board PCB down and under the front latches (small horizontal bars at the front of the adapter) and fit the top of the ethernet jack under the baffle opening then pull back on the rear latch and push the PCB down and release. The PCB should be seated firmly with minimal play.
 
 - I didn't put any screws through the **commell** PCB; there doesn't seem to be enough space to apply both screws - space is that tight below the adapter. In 5070's with no third display port (I think the J4105's have 2 DPs / J5005's have 3 DPs) you can easily use one screw on the lower side and a hex nut on the inside. With the **winyao**, which has a low-profile ethernet jack, I was able to put two M3x6mm thin (_wafer_) head machine screws from the bottom up with hex nuts inside the adapter. 
 
