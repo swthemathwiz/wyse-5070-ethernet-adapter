@@ -13,12 +13,13 @@ include <smidge.scad>;
 // Part #: 8111-M2-C
 //
 // This NIC is an M.2 A+E 2230 with a Realtek Gigabit NIC
-// and a tiny daughter board and tiny ribbon cable.
+// and a tiny daughter board and tiny ~6" ribbon cable.
 //
 // It is available from DFRobot:
-// https://www.dfrobot.com/product-2318.html
-//
-// Also available from various Aliexpress vendors.
+//   https://www.dfrobot.com/product-2318.html
+// Distributed in the United States by both Digi-Key and
+// Mouser Electronics. Also available from various
+// Aliexpress vendors.
 //
 // All these values were measured. The components/holes
 // are symmetric about the Y-axis (side<->side), so some
@@ -36,7 +37,7 @@ include <smidge.scad>;
 function nic_kind() = "winyao";
 
 // pcb thickness ~1.57mm (nominal 4-layer PCB thickness)
-// pcb width X length as measured (about 1.5" x 1")
+// pcb width X length as measured
 function nic_get_pcb_size() = [ 30.2, 19.2, 1.57 ];
 
 // ethernet size [left<->right,front<->rear,top<->bottom]
@@ -95,8 +96,6 @@ module nic(transparency=1.0,center=true,with_shield=true) {
 
   module ethernet() {
     color( "silver", transparency )
-      //translate( [_nic_get_ethernet_left_pos(),nic_get_pcb_size().y-nic_get_ethernet_size().y+nic_get_ethernet_projection(),nic_get_pcb_size().z] )
-      //  cube( nic_get_ethernet_size() );
       translate( [_nic_get_ethernet_left_pos(), nic_get_pcb_size().y-nic_get_ethernet_size().y+nic_get_ethernet_projection(), _nic_get_ethernet_bottom_pos()] )
         cube( nic_get_ethernet_size() );
     color( "black", transparency ) {
