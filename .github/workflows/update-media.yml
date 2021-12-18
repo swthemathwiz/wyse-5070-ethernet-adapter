@@ -1,0 +1,54 @@
+name: Update Media
+
+on:
+  workflow_dispatch: 
+    inputs:
+      message:
+        description: 'Commit message'
+        default: 'Update media'
+        required: true
+      dryrun:
+        description: 'Dry-run'
+        type: boolean
+        default: false
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install OpenSCAD
+      run: |
+        sudo apt-get install openscad xvfb && openscad --version
+    - name: Build
+      run: |
+        xvfb-run make -j2 all icons
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: media
+        clean: false
+    - name: Update Media STL
+      run : |
+        git clean -ffdx -e '*.stl' -e '*.png'
+        mv *.stl *.png media/
+        git status --short
+        if [ -z "$(git status --porcelain)" ]; then 
+          # Working directory clean
+          echo "Media STLs are up to date"
+        else 
+          # Uncommitted changes
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add media/*.stl media/*.png
+          git commit -m '${{ github.event.inputs.message }}'
+          if [ '${{ github.event.inputs.dryrun}}' = 'true' ]; then
+            git push --dry-run origin media:media
+            echo "Media STLs would have been updated (dry-run)"
+          else
+            git push origin media:media
+            echo "Media STLs updated"
+          fi
+        fi

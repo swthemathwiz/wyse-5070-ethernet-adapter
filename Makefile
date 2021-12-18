@@ -4,7 +4,7 @@
 # File:    Makefile
 # Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
 # License: CC BY-NC-SA 4.0 (Attribution-NonCommercial-ShareAlike)
-# Desc:    Makefile for directory 
+# Desc:    Makefile for directory
 #
 
 NAME = wyse-5070-ethernet-adapter
@@ -30,23 +30,24 @@ BUILDS = \
 EXTRAS = \
 	Makefile \
 	README.md \
-	LICENSE.txt
+	LICENSE.txt \
 
 TARGETS = $(BUILDS:.scad=.stl)
-
 IMAGES = $(BUILDS:.scad=.png)
-
-SOURCEZIP = $(NAME)-source.zip
+ICONS = $(BUILDS:.scad=.icon.png)
 
 DEPDIR := .deps
 DEPFLAGS = -d $(DEPDIR)/$*.d
 
 COMPILE.scad = $(OPENSCAD) -o $@ $(DEPFLAGS)
 RENDER.scad = $(OPENSCAD) -o $@
+RENDERICON.scad = $(OPENSCAD) -o $@ --colorscheme Tomorrow --imgsize=128,128
 
 all: $(TARGETS)
 
 images: $(IMAGES)
+
+icons : $(ICONS)
 
 %.stl : %.scad
 %.stl : %.scad $(DEPDIR)/%.d | $(DEPDIR)
@@ -55,13 +56,11 @@ images: $(IMAGES)
 %.png : %.scad
 	$(RENDER.scad) $<
 
-$(SOURCEZIP): $(EXTRAS) $(SRCS) $(BUILDS)
-	(for F in $^; do echo $$F ; done) | zip -@ - > $@
-
-source: $(SOURCEZIP)
+%.icon.png : %.scad
+	$(RENDERICON.scad) $<
 
 clean:
-	rm -f *.stl *.bak *.png $(SOURCEZIP)
+	rm -f *.stl *.bak *.png
 
 distclean: clean
 	rm -rf $(DEPDIR)
