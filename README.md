@@ -1,5 +1,5 @@
 # wyse-5070-ethernet-adapter
-This is a 3D-Printable [Openscad](https://openscad.org/) model of a second ethernet port adapter for the [Dell Wyse 5070 Thin Client](https://www.dell.com/en-us/work/shop/wyse-endpoints-and-software/wyse-5070-thin-client/spd/wyse-5070-thin-client) and various aftermarket M.2 A+E ethernet adapters using the existing option port in the 5070 case.
+This is a 3D-Printable [OpenSCAD](https://openscad.org/) model of a second ethernet port adapter for the [Dell Wyse 5070 Thin Client](https://www.dell.com/en-us/work/shop/wyse-endpoints-and-software/wyse-5070-thin-client/spd/wyse-5070-thin-client) and various aftermarket M.2 A+E ethernet adapters using the existing option port in the 5070 case.
 
 ## Ethernet Adapters
 
@@ -19,11 +19,11 @@ I would like to know if there are other working cards.
 
 ## Source
 
-The model is built using Openscad. _wyse-XXX-adapter.scad_ is the main file for each adapter, where _XXX_ is the version of the NIC. It customizes a ethernet adapter _wyse-ethernet.scad_ using information from the appropriate _XXX-nic.scad_ NIC file.
+The model is built using OpenSCAD. _wyse-XXX-adapter.scad_ is the main file for each adapter, where _XXX_ is the version of the NIC. It customizes a ethernet adapter _wyse-ethernet.scad_ using information from the appropriate _XXX-nic.scad_ NIC file.
 
 If you find the fit too tight, or the dimensions of the PCB have changed, you might wish to change the _tolerance_ settings in the adapter file, or the corresponding dimensions in the appropriate _XXX-nic.scad_ NIC file. Generally, I had only one adapter to test against, so I don't know how measurements vary from sample to sample. I even had to modify some measurements listed in manuals, so there might be other versions of the product with different components.
 
-If you need to debug the source, I suggest including the appropriate NIC file in _wyse-ethernet.scad_ and then working directly from that file. There doesn't seem to be a great way to handle the NIC "classes" in Openscad.
+If you need to debug the source, I suggest including the appropriate NIC file in _wyse-ethernet.scad_ and then working directly from that file. There doesn't seem to be a great way to handle the NIC "classes" in OpenSCAD.
 
 Finally, you can also build a simple blank that blocks off an empty I/O slot from the _wyse-filler.scad_.
 
