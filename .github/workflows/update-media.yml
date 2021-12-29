@@ -7,6 +7,21 @@ on:
         description: 'Commit message'
         default: 'Update media'
         required: true
+      stls:
+        description: 'STLs'
+        type: boolean
+        default: true
+        required: true
+      icons:
+        description: 'Icons'
+        type: boolean
+        default: true
+        required: true
+      images:
+        description: 'Images'
+        type: boolean
+        default: false
+        required: true
       dryrun:
         description: 'Dry-run'
         type: boolean
@@ -21,23 +36,40 @@ jobs:
       uses: actions/checkout@v2
     - name: Install OpenSCAD
       run: |
-        sudo apt-get install openscad xvfb && openscad --version
+        sudo apt-get -qq install openscad xvfb && openscad --version
     - name: Build
       run: |
-        xvfb-run make -j2 all icons
-    - name: Checkout
+        TARGETS=""
+        if [ '${{github.event.inputs.stls}}' = 'true' ]; then
+          TARGETS="all $TARGETS"
+        fi
+        if [ '${{github.event.inputs.images}}' = 'true' ]; then
+          TARGETS="images $TARGETS"
+        fi
+        if [ '${{github.event.inputs.icons}}' = 'true' ]; then
+          TARGETS="icons $TARGETS"
+        fi
+        if [ ! -z "$TARGETS" ]; then
+          xvfb-run -e /dev/stdout make -j2 $TARGETS
+        fi
+    - name: Switch to Media Branch
       uses: actions/checkout@v2
       with:
         ref: media
         clean: false
-    - name: Update Media STL
+    - name: Checkin Media
       run : |
         git clean -ffdx -e '*.stl' -e '*.png'
-        mv *.stl *.png media/
+        if [ '${{github.event.inputs.images}}' = 'true' ] || [ '${{github.event.inputs.icons}}' = 'true' ]; then
+          mv *.png media/
+        fi
+        if [ '${{github.event.inputs.stls}}' = 'true' ]; then
+          mv *.stl media/
+        fi
         git status --short
         if [ -z "$(git status --porcelain)" ]; then 
           # Working directory clean
-          echo "Media STLs are up to date"
+          echo "Media files are up to date"
         else 
           # Uncommitted changes
           git config user.name github-actions
@@ -46,9 +78,9 @@ jobs:
           git commit -m '${{ github.event.inputs.message }}'
           if [ '${{ github.event.inputs.dryrun}}' = 'true' ]; then
             git push --dry-run origin media:media
-            echo "Media STLs would have been updated (dry-run)"
+            echo "Media files would have been updated (dry-run)"
           else
             git push origin media:media
-            echo "Media STLs updated"
+            echo "Media files updated"
           fi
         fi
