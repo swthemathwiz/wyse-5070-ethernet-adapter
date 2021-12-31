@@ -1,4 +1,4 @@
-name: Update Media
+name: 'Update Media'
 
 on:
   workflow_dispatch: 
@@ -22,7 +22,7 @@ on:
         type: boolean
         default: false
         required: true
-      dryrun:
+      dry_run:
         description: 'Dry-run'
         type: boolean
         default: false
@@ -32,55 +32,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install OpenSCAD
+    - name: Set Target
+      id: target
+      shell: bash
       run: |
-        sudo apt-get -qq install openscad xvfb && openscad --version
-    - name: Build
-      run: |
-        TARGETS=""
+        # Consolidate target to a string
+        target=()
         if [ '${{github.event.inputs.stls}}' = 'true' ]; then
-          TARGETS="all $TARGETS"
+          target+=('all')
         fi
         if [ '${{github.event.inputs.images}}' = 'true' ]; then
-          TARGETS="images $TARGETS"
+          target+=('images')
         fi
         if [ '${{github.event.inputs.icons}}' = 'true' ]; then
-          TARGETS="icons $TARGETS"
+          target+=('icons')
         fi
-        if [ ! -z "$TARGETS" ]; then
-          xvfb-run -e /dev/stdout make -j2 $TARGETS
-        fi
-    - name: Switch to Media Branch
-      uses: actions/checkout@v2
+        echo "Target: ${target[@]}"
+        echo "::set-output name=string::$(echo ${target[@]})"
+    - name: Build Media Artifacts
+      uses: swthemathwiz/openscad-actions/build@v1
       with:
-        ref: media
-        clean: false
-    - name: Checkin Media
-      run : |
-        git clean -ffdx -e '*.stl' -e '*.png'
-        if [ '${{github.event.inputs.images}}' = 'true' ] || [ '${{github.event.inputs.icons}}' = 'true' ]; then
-          mv *.png media/
-        fi
-        if [ '${{github.event.inputs.stls}}' = 'true' ]; then
-          mv *.stl media/
-        fi
-        git status --short
-        if [ -z "$(git status --porcelain)" ]; then 
-          # Working directory clean
-          echo "Media files are up to date"
-        else 
-          # Uncommitted changes
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add media/*.stl media/*.png
-          git commit -m '${{ github.event.inputs.message }}'
-          if [ '${{ github.event.inputs.dryrun}}' = 'true' ]; then
-            git push --dry-run origin media:media
-            echo "Media files would have been updated (dry-run)"
-          else
-            git push origin media:media
-            echo "Media files updated"
-          fi
-        fi
+        target: '${{steps.target.outputs.string}}'
+        check_target: true
+        use_xvfb: true
+    - name: Update Media Artifacts
+      uses: swthemathwiz/openscad-actions/update-media-artifacts@v1
+      with:
+        message: '${{github.event.inputs.message}}'
+        dry_run: '${{github.event.inputs.dry_run}}'
+        files: 'png stl'
+        files_except: '*-infill.*'
+        media_branch: 'media'
+        media_subdirectory: 'media'

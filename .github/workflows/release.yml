@@ -1,4 +1,4 @@
-name: Release with STL
+name: 'Release with STLs'
 
 on:
   push:
@@ -9,12 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install OpenSCAD
-      run: sudo apt-get install openscad && openscad --version
     - name: Build
-      run: make -j2
+      uses: swthemathwiz/openscad-actions/build@v1
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
