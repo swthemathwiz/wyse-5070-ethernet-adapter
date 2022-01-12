@@ -1,7 +1,7 @@
 name: 'Update Media'
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
     inputs:
       message:
         description: 'Commit message'
@@ -38,13 +38,13 @@ jobs:
       run: |
         # Consolidate target to a string
         target=()
-        if [ '${{github.event.inputs.stls}}' = 'true' ]; then
+        if [ '${{ github.event.inputs.stls }}' = 'true' ]; then
           target+=('all')
         fi
-        if [ '${{github.event.inputs.images}}' = 'true' ]; then
+        if [ '${{ github.event.inputs.images }}' = 'true' ]; then
           target+=('images')
         fi
-        if [ '${{github.event.inputs.icons}}' = 'true' ]; then
+        if [ '${{ github.event.inputs.icons }}' = 'true' ]; then
           target+=('icons')
         fi
         echo "Target: ${target[@]}"
@@ -52,14 +52,15 @@ jobs:
     - name: Build Media Artifacts
       uses: swthemathwiz/openscad-actions/build@v1
       with:
-        target: '${{steps.target.outputs.string}}'
+        target: '${{ steps.target.outputs.string }}'
         check_target: true
+        extra_packages: pngcrush
         use_xvfb: true
     - name: Update Media Artifacts
       uses: swthemathwiz/openscad-actions/update-media-artifacts@v1
       with:
-        message: '${{github.event.inputs.message}}'
-        dry_run: '${{github.event.inputs.dry_run}}'
+        message: '${{ github.event.inputs.message }}'
+        dry_run: '${{ github.event.inputs.dry_run }}'
         files: 'png stl'
         files_except: '*-infill.*'
         media_branch: 'media'
