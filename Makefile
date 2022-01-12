@@ -10,6 +10,7 @@
 NAME = wyse-5070-ethernet-adapter
 
 OPENSCAD = openscad
+PNGCRUSH = pngcrush -brute
 
 SRCS = \
 	commell-nic.scad \
@@ -41,7 +42,7 @@ DEPFLAGS = -d $(DEPDIR)/$*.d
 
 COMPILE.scad = $(OPENSCAD) -o $@ $(DEPFLAGS)
 RENDER.scad = $(OPENSCAD) -o $@ --render --colorscheme=Tomorrow
-RENDERICON.scad = $(RENDER.scad) --imgsize=128,128
+RENDERICON.scad = $(RENDER.scad) --imgsize=256,256
 
 .PHONY: all images icons clean distclean
 
@@ -55,11 +56,14 @@ icons : $(ICONS)
 %.stl : %.scad $(DEPDIR)/%.d | $(DEPDIR)
 	$(COMPILE.scad) $<
 
-%.png : %.scad
+%.unoptimized.png : %.scad
 	$(RENDER.scad) $<
 
-%.icon.png : %.scad
+%.icon.unoptimized.png : %.scad
 	$(RENDERICON.scad) $<
+
+%.png : %.unoptimized.png
+	$(PNGCRUSH) $< $@ || mv $< $@
 
 clean:
 	rm -f *.stl *.bak *.png
