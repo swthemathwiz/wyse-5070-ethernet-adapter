@@ -23,7 +23,7 @@ gotten the first two to work):
 
 ![Image of Commell Adapter](../media/media/commell-view-interior.jpg?raw=true "Commell Adapter mounted in Wyse 5070")
 
-- :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html):
+- :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL-8111F:
   This is a Realtek RTL-8111F 2230 M.2 A+E card that fits the Wifi/2nd Ethernet
   slot of the 5070. It comes with a small metal shield (presumably designed to
   allow mounting in a standard DE9 port - i.e., VGA or serial knock out). I found
@@ -32,7 +32,7 @@ gotten the first two to work):
   sell this for their LattePanda products and it is also available from
   [Digi-Key](https://www.digikey.com/en/products/detail/dfrobot/FIT0798/14824986)
   and [Mouser Electronics](https://www.mouser.com/ProductDetail/DFRobot/FIT0798?qs=%2Fha2pyFadui97DZ%2FSy%2FYrWNYjzbmGQYac80ChPKoMVC2EQ7OhLzBwA%3D%3D).
-  The Winyao (OEM) product is listed on several Chinese parts sites too. If you
+  The Winyao (OEM) product and an unbranded version are listed on several Chinese sites too. If you
   use this with a FreeBSD-based distribution (including pfSense, OPNsense, etc.)
   count on using the **realtek-re-kmod**
   [(google)](https://www.google.com/search?q=realtek-re-kmod) driver package.
