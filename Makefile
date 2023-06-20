@@ -1,5 +1,5 @@
 #
-# Copyright (c) Stewart Whitman, 2020-2021.
+# Copyright (c) Stewart Whitman, 2020-2023.
 #
 # File:    Makefile
 # Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -14,7 +14,7 @@ PNGCRUSH = pngcrush -brute
 
 SRCS = \
 	commell-nic.scad \
-	realtek-nic.scad \
+	iocrest-nic.scad \
 	winyao-nic.scad \
 	primitives.scad \
 	smidge.scad \
@@ -25,7 +25,7 @@ SRCS = \
 BUILDS = \
 	wyse-commell-adapter.scad \
 	wyse-winyao-adapter.scad \
-	wyse-realtek-adapter.scad \
+	wyse-iocrest-adapter.scad \
 	wyse-filler.scad
 
 EXTRAS = \

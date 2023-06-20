@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020-2021.
+// Copyright (c) Stewart H. Whitman, 2020-2023.
 //
 // File:    wyse-ethernet.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -8,7 +8,7 @@
 //
 
 use <wyse-blank.scad>
-//use <realtek-nic.scad>
+//use <iocrest-nic.scad>
 //use <commell-nic.scad>
 //use <winyao-nic.scad>
 include <smidge.scad>
@@ -32,7 +32,7 @@ mount_hole_radius = nic_get_bottom_hole_diameter()/2 + 0.2;
 mount_radius = mount_hole_radius*1.75;
 
 // Support thickness
-support_thickness = (nic_kind() == "realtek") ? 0.8 : 1.6;
+support_thickness = (nic_kind() == "iocrest") ? 0.8 : 1.6;
 
 // Baffle thickness (extra for shield indent)
 baffle_thickness = !use_shield_mounting ? 1.6 : 1.6 + nic_get_shield_thickness();
@@ -56,7 +56,7 @@ config = [
 ];
 
 // Trough indent from sides [front,rear,left,right] to support PCB w/o touching solder points
-trough_indent_sizes = (nic_kind() == "realtek") ? [ [1.5, 7.5, 1.5, 1.5] ] :
+trough_indent_sizes = (nic_kind() == "iocrest") ? [ [1.5, 7.5, 1.5, 1.5] ] :
                        (nic_kind() == "commell") ? [ [1.6, 7.2, 4.4, 4.4] ] :
                         (nic_kind() == "winyao")  ? (use_shield_mounting ? [ [ 0.0, 11.0, 3.9, 3.9], [ 0.0, 7.0, 9.0, 9.0] ] :
                                                                            [ [ 1.6, 11.0, 4.2, 4.2], [ 1.6, 7.0, 9.0, 9.0] ] )

@@ -40,7 +40,7 @@ gotten the first two to work):
 
 ![Image of Winyao Adapter](../media/media/winyao-view-interior.jpg?raw=true "Winyao/DFRobot Adapter mounted in Wyse 5070")
 
-- :x: **realtek**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178):
+- :x: **iocrest**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178):
   This is a Realtek
   RTL-8111H 2230 M.2 A+E card, which **did not work** on the 5070 for me. The
   card was not recognized in the BIOS or by the OS. I only had one sample, so
@@ -49,7 +49,7 @@ gotten the first two to work):
   prevents the case from being closed**. So you would need to replace the
   connectors on the daughter board with their right-angle equivalents. Cost is
   about $17 to $21 from various eBay or Aliexpress vendors.
-  [View model](../media/media/wyse-realtek-adapter.stl "View Model of Realtek Adapter").
+  [View model](../media/media/wyse-iocrest-adapter.stl "View Model of IOCREST Adapter").
 
 I would like to know if there are other working cards.
 

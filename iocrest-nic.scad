@@ -1,7 +1,7 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020-2021.
+// Copyright (c) Stewart H. Whitman, 2020-2023.
 //
-// File:    realtek-nic.scad
+// File:    iocrest-nic.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
 // License: CC BY-NC-SA 4.0 (Attribution-NonCommercial-ShareAlike)
 // Desc:    Mock-up of the very common Realtek RTL8111 Daughter Board
@@ -9,9 +9,9 @@
 
 include <smidge.scad>;
 
-// Common Realtek Mini PCI-Express Daughter board layout
+// IOCREST Realtek Mini PCI-Express Daughter board layout
 //
-// An example would be: IOCREST IO-M2F8111H-GLAN
+// Part Number: IOCREST IO-M2F8111H-GLAN
 //
 // The problem with these boards are that the cables are
 // large and bulk, so the connectors may need changing out to
@@ -26,7 +26,7 @@ include <smidge.scad>;
 //
 // Unique, for customization.
 //
-function nic_kind() = "realtek";
+function nic_kind() = "iocrest";
 
 // PCB thickness ~1.57mm (nominal 4-layer PCB thickness)
 // PCB width X length as measured (about 1.5" x 1")
