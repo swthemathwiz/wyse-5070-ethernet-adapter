@@ -23,26 +23,26 @@ gotten the first two to work):
 
 ![Image of Commell Adapter](../media/media/commell-view-interior.jpg?raw=true "Commell Adapter mounted in Wyse 5070")
 
-- :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL-8111F:
-  This is a Realtek RTL-8111F 2230 M.2 A+E card that fits the Wifi/2nd Ethernet
-  slot of the 5070. It comes with a small metal shield (presumably designed to
+- :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C & 8125-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL8111F & RTL8125B:
+  These are Realtek RTL8111F and RTL8125B 2230 M.2 A+E cards that fit the Wifi/2nd Ethernet
+  slot of the 5070. They come with a small metal shield (presumably designed to
   allow mounting in a standard DE9 port - i.e., VGA or serial knock out). I found
-  it easier to adapt with the shield removed - just unscrew. Cost was about $18 +
-  shipping direct from [DFRobot](https://www.dfrobot.com/product-2318.html). They
-  sell this for their LattePanda products and it is also available from
-  [Digi-Key](https://www.digikey.com/en/products/detail/dfrobot/FIT0798/14824986)
+  it easier to adapt with the shield removed - just unscrew. The 1GbE version costs about $18 +
+  shipping direct from [DFRobot](https://www.dfrobot.com/product-2318.html) and is also
+  available from [Digi-Key](https://www.digikey.com/en/products/detail/dfrobot/FIT0798/14824986)
   and [Mouser Electronics](https://www.mouser.com/ProductDetail/DFRobot/FIT0798?qs=%2Fha2pyFadui97DZ%2FSy%2FYrWNYjzbmGQYac80ChPKoMVC2EQ7OhLzBwA%3D%3D).
-  The Winyao (OEM) product and an unbranded version are listed on several Chinese sites too. If you
-  use this with a FreeBSD-based distribution (including pfSense, OPNsense, etc.)
-  count on using the **realtek-re-kmod**
-  [(google)](https://www.google.com/search?q=realtek-re-kmod) driver package.
+  The Winyao (OEM) and "generic" versions are listed on several Chinese sites for less.
+  There are two choices: 1GbE vs. 2.5GbE, and vertical vs. horizontal pins on the M.2 card (all choices work).
+  With FreeBSD-based distributions (including pfSense, OPNsense, etc.) count on installing
+  the **realtek-re-kmod** [(google)](https://www.google.com/search?q=realtek-re-kmod) driver package instead of
+  using the OS' native driver.
   [View model](../media/media/wyse-winyao-adapter.stl "View Model of Winyao/DFRobot Adapter").
 
 ![Image of Winyao Adapter](../media/media/winyao-view-interior.jpg?raw=true "Winyao/DFRobot Adapter mounted in Wyse 5070")
 
 - :x: **iocrest**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178):
   This is a Realtek
-  RTL-8111H 2230 M.2 A+E card, which **did not work** on the 5070 for me. The
+  RTL8111H 2230 M.2 A+E card, which **did not work** on the 5070 for me. The
   card was not recognized in the BIOS or by the OS. I only had one sample, so
   perhaps this was a product issue (it was a relatively new product when I got
   one). The other problem with this card is **the cable & connector combination
