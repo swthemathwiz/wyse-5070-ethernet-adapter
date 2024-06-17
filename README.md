@@ -60,6 +60,17 @@ various eBay or Aliexpress vendors.
 
 I would like to know if there are other working cards.
 
+Also included is:
+
+<div class="model" data-name="Filler" data-left="wyse-filler.stl" data-left-icon="wyse-filler.icon.png">
+
+### Filler
+
+This is a simple *blank* that blocks off the empty I/O-option slot and
+installs like an adapter.
+
+</div>
+
 ## Source
 
 The model is built using OpenSCAD. *wyse-XXX-adapter.scad* is the main file for
@@ -77,9 +88,6 @@ so there might be other versions of the product with different components.
 If you need to debug the source, I suggest including the appropriate NIC file in
 *wyse-ethernet.scad* and then working directly from that file. There doesn't
 seem to be a great way to handle the NIC "classes" in OpenSCAD.
-
-Finally, you can also build a simple blank that blocks off an empty I/O slot
-from the *wyse-filler.scad*.
 
 ## Printing
 
