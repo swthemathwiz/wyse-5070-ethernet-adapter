@@ -83,7 +83,7 @@ from the *wyse-filler.scad*.
 
 ## Printing
 
-I use a Creality Ender 3 Pro to build with a layer height of 0.16mm. In Cura,
+I use a Creality Ender 3 Pro to build with a layer height of 0.16 mm. In Cura,
 you need ***Generate Support*** checked, with ***Support Placement*** set to
 ***Touching Buildplate***. Support should be used only below the two *wings*
 that are screwed to the computer; in particular, ensure that no support is added
