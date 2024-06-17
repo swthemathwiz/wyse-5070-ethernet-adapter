@@ -12,18 +12,6 @@ in the 5070 case.
 There is support for three different M.2 ethernet adapters (**N.B.**: I've only
 gotten the first two to work):
 
-<div class="model" data-name="Commell Adapter" data-left="wyse-commell-adapter.stl" data-left-icon="wyse-commell-adapter.icon.png" data-right="commell-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-commell-adapter.stl" target="_blank" title="View Commell Adapter Model"><img src="../media/media/wyse-commell-adapter.icon.png" alt="Commell Adapter Model" width="96" height="96" /></a></td><td>
-
-### :heavy\_check\_mark: **commell**: [Commell M2-210 A-/E-Key Gigabit Ethernet Card](http://www.commell.com.tw/Product/Peripheral/M.2%20%28NGFF%29%20card/M2-210.htm)
-
-This is an Intel I210-AT 2230 M.2 A+E card that fits in the Wifi/2nd Ethernet
-slot of the 5070. The daughter board needs to be cut; it comes perforated
-about half way along the length. I also filed down the solder tabs on the
-ethernet jack at the bottom of the PCB. Cost was about $45 + shipping from one
-of their [distributors](http://www.commell.com.tw/distributor/Distributor.htm).
-
-</td><td align="center" width="128" height="128"><a href="../media/media/commell-view-interior.jpg" target="_blank" title="View Commell Adapter Installed"><img src="../media/media/commell-view-interior.jpg" alt="Commell Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
-
 <div class="model" data-name="Winyao Adapter" data-left="wyse-winyao-adapter.stl" data-left-icon="wyse-winyao-adapter.icon.png" data-right="winyao-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-winyao-adapter.stl" target="_blank" title="View Winyao Adapter Model"><img src="../media/media/wyse-winyao-adapter.icon.png" alt="Winyao Adapter Model" width="96" height="96" /></a></td><td>
 
 ### :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C & 8125-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL8111F & RTL8125B
@@ -42,6 +30,18 @@ the **realtek-re-kmod** [(google)](https://www.google.com/search?q=realtek-re-km
 using the OS' native driver.
 
 </td><td align="center" width="128" height="128"><a href="../media/media/winyao-view-interior.jpg" target="_blank" title="View Winyao Adapter Installed"><img src="../media/media/winyao-view-interior.jpg" alt="Winyao Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
+
+<div class="model" data-name="Commell Adapter" data-left="wyse-commell-adapter.stl" data-left-icon="wyse-commell-adapter.icon.png" data-right="commell-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-commell-adapter.stl" target="_blank" title="View Commell Adapter Model"><img src="../media/media/wyse-commell-adapter.icon.png" alt="Commell Adapter Model" width="96" height="96" /></a></td><td>
+
+### :heavy\_check\_mark: **commell**: [Commell M2-210 A-/E-Key Gigabit Ethernet Card](http://www.commell.com.tw/Product/Peripheral/M.2%20%28NGFF%29%20card/M2-210.htm) (and probably their M2-225)
+
+This is an Intel I210-AT 2230 M.2 A+E card that fits in the Wifi/2nd Ethernet
+slot of the 5070. The daughter board needs to be cut; it comes perforated
+about half way along the length. I also filed down the solder tabs on the
+ethernet jack at the bottom of the PCB. Cost was about $45 + shipping from one
+of their [distributors](http://www.commell.com.tw/distributor/Distributor.htm).
+
+</td><td align="center" width="128" height="128"><a href="../media/media/commell-view-interior.jpg" target="_blank" title="View Commell Adapter Installed"><img src="../media/media/commell-view-interior.jpg" alt="Commell Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
 
 <div class="model" data-name="IOCREST Adapter" data-left="wyse-iocrest-adapter.stl" data-left-icon="wyse-iocrest-adapter.icon.png"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-iocrest-adapter.stl" target="_blank" title="View IOCREST Adapter Model"><img src="../media/media/wyse-iocrest-adapter.icon.png" alt="IOCREST Adapter Model" width="96" height="96" /></a></td><td>
 
