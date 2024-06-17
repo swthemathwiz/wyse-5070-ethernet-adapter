@@ -87,26 +87,26 @@ inside the adapter.
 
 To install the card in the adapter:
 
-- Slid the daughter board PCB down and under the front latches (small horizontal
-  bars at the front of the adapter) and fit the top of the ethernet jack under
-  the baffle opening then pull back on the rear latch and push the PCB down and
-  release. The PCB should be seated firmly with minimal play.
+1. Slid the daughter board PCB down and under the front latches (small horizontal
+   bars at the front of the adapter) and fit the top of the ethernet jack under
+   the baffle opening then pull back on the rear latch and push the PCB down and
+   release. The PCB should be seated firmly with minimal play.
 
-- I didn't put any screws through the **commell** PCB; there doesn't seem to be
-  enough space to apply both screws - space is that tight below the adapter.
-  In 5070's with no third display port (I think the J4105's have 2 DPs / J5005's
-  have 3 DPs) you can easily use one screw on the lower side and a hex nut on
-  the inside. With the **winyao**, which has a low-profile ethernet jack, I was
-  able to put two M3x6mm thin (*wafer*) head machine screws from the bottom up
-  with hex nuts inside the adapter.
+2. I didn't put any screws through the **commell** PCB; there doesn't seem to be
+   enough space to apply both screws - space is that tight below the adapter.
+   In 5070's with no third display port (I think the J4105's have 2 DPs / J5005's
+   have 3 DPs) you can easily use one screw on the lower side and a hex nut on
+   the inside. With the **winyao**, which has a low-profile ethernet jack, I was
+   able to put two M3x6mm thin (*wafer*) head machine screws from the bottom up
+   with hex nuts inside the adapter.
 
-- Install the cable connecting the daughter board to the M.2 card (before
-  putting the adapter into the 5070).
+3. Install the cable connecting the daughter board to the M.2 card (before
+   putting the adapter into the 5070).
 
-- Screw two reasonably-short M3 thin (*wafer*) head machine screws into the 5070
-  through the *wings* of the adapter.
+4. Screw two reasonably-short M3 thin (*wafer*) head machine screws into the 5070
+   through the *wings* of the adapter.
 
-- Check that you can close the case.
+5. Check that you can close the case.
 
 ## Also Available on Thingiverse
 
