@@ -1,0 +1,20 @@
+name: 'Annotate README.md (manual)'
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry-run'
+        type: boolean
+        default: false
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Annotate README.md
+      uses: swthemathwiz/openscad-actions/annotate-models@v1
+      with:
+        file: 'README.md'
+        dry_run: '${{ github.event.inputs.dry_run }}'

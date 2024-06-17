@@ -12,44 +12,51 @@ in the 5070 case.
 There is support for three different M.2 ethernet adapters (**N.B.**: I've only
 gotten the first two to work):
 
-- :heavy\_check\_mark: **commell**: [Commell M2-210 A-/E-Key Gigabit Ethernet Card](http://www.commell.com.tw/Product/Peripheral/M.2%20%28NGFF%29%20card/M2-210.htm):
-  This is an Intel I210-AT 2230 M.2 A+E card that fits in the Wifi/2nd Ethernet
-  slot of the 5070. The daughter board needs to be cut; it comes perforated
-  about half way along the length. I also filed down the solder tabs on the
-  ethernet jack at the bottom of the PCB. Cost was about $45 + shipping from one
-  of their
-  [distributors](http://www.commell.com.tw/distributor/Distributor.htm).
-  [View model](../media/media/wyse-commell-adapter.stl "View Model of Commell Adapter").
+<div class="model" data-name="Commell Adapter" data-left="wyse-commell-adapter.stl" data-right="commell-view-interior.jpg">
 
-![Image of Commell Adapter](../media/media/commell-view-interior.jpg?raw=true "Commell Adapter mounted in Wyse 5070")
+### :heavy\_check\_mark: **commell**: [Commell M2-210 A-/E-Key Gigabit Ethernet Card](http://www.commell.com.tw/Product/Peripheral/M.2%20%28NGFF%29%20card/M2-210.htm)
 
-- :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C & 8125-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL8111F & RTL8125B:
-  These are Realtek RTL8111F and RTL8125B 2230 M.2 A+E cards that fit the Wifi/2nd Ethernet
-  slot of the 5070. They come with a small metal shield (presumably designed to
-  allow mounting in a standard DE9 port - i.e., VGA or serial knock out). I found
-  it easier to adapt with the shield removed - just unscrew. The 1GbE version costs about $18 +
-  shipping direct from [DFRobot](https://www.dfrobot.com/product-2318.html) and is also
-  available from [Digi-Key](https://www.digikey.com/en/products/detail/dfrobot/FIT0798/14824986)
-  and [Mouser Electronics](https://www.mouser.com/ProductDetail/DFRobot/FIT0798?qs=%2Fha2pyFadui97DZ%2FSy%2FYrWNYjzbmGQYac80ChPKoMVC2EQ7OhLzBwA%3D%3D).
-  The Winyao (OEM) and "generic" versions are listed on several Chinese sites for less.
-  There are two choices: 1GbE vs. 2.5GbE, and vertical vs. horizontal pins on the M.2 card (all choices work).
-  With FreeBSD-based distributions (including pfSense, OPNsense, etc.) count on installing
-  the **realtek-re-kmod** [(google)](https://www.google.com/search?q=realtek-re-kmod) driver package instead of
-  using the OS' native driver.
-  [View model](../media/media/wyse-winyao-adapter.stl "View Model of Winyao/DFRobot Adapter").
+This is an Intel I210-AT 2230 M.2 A+E card that fits in the Wifi/2nd Ethernet
+slot of the 5070. The daughter board needs to be cut; it comes perforated
+about half way along the length. I also filed down the solder tabs on the
+ethernet jack at the bottom of the PCB. Cost was about $45 + shipping from one
+of their [distributors](http://www.commell.com.tw/distributor/Distributor.htm).
 
-![Image of Winyao Adapter](../media/media/winyao-view-interior.jpg?raw=true "Winyao/DFRobot Adapter mounted in Wyse 5070")
+</div>
 
-- :x: **iocrest**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178):
-  This is a Realtek
-  RTL8111H 2230 M.2 A+E card, which **did not work** on the 5070 for me. The
-  card was not recognized in the BIOS or by the OS. I only had one sample, so
-  perhaps this was a product issue (it was a relatively new product when I got
-  one). The other problem with this card is **the cable & connector combination
-  prevents the case from being closed**. So you would need to replace the
-  connectors on the daughter board with their right-angle equivalents. Cost is
-  about $17 to $21 from various eBay or Aliexpress vendors.
-  [View model](../media/media/wyse-iocrest-adapter.stl "View Model of IOCREST Adapter").
+<div class="model" data-name="Winyao Adapter" data-left="wyse-winyao-adapter.stl" data-right="winyao-view-interior.jpg">
+
+### :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C & 8125-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL8111F & RTL8125B
+
+These are Realtek RTL8111F and RTL8125B 2230 M.2 A+E cards that fit the Wifi/2nd Ethernet
+slot of the 5070. They come with a small metal shield (presumably designed to
+allow mounting in a standard DE9 port - i.e., VGA or serial knock out). I found
+it easier to adapt with the shield removed - just unscrew. The 1GbE version costs about $18 +
+shipping direct from [DFRobot](https://www.dfrobot.com/product-2318.html) and is also
+available from [Digi-Key](https://www.digikey.com/en/products/detail/dfrobot/FIT0798/14824986)
+and [Mouser Electronics](https://www.mouser.com/ProductDetail/DFRobot/FIT0798?qs=%2Fha2pyFadui97DZ%2FSy%2FYrWNYjzbmGQYac80ChPKoMVC2EQ7OhLzBwA%3D%3D).
+The Winyao (OEM) and "generic" versions are listed on several Chinese sites for less.
+There are two choices: 1GbE vs. 2.5GbE, and vertical vs. horizontal pins on the M.2 card (all choices work).
+With FreeBSD-based distributions (including pfSense, OPNsense, etc.) count on installing
+the **realtek-re-kmod** [(google)](https://www.google.com/search?q=realtek-re-kmod) driver package instead of
+using the OS' native driver.
+
+</div>
+
+<div class="model" data-name="IOCREST Adapter" data-left="wyse-iocrest-adapter.stl">
+
+### :x: **iocrest**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178)
+
+This is a Realtek RTL8111H 2230 M.2 A+E card, which **did not work** on
+the 5070 for me. The card was not recognized in the BIOS or by the OS. I
+only had one sample, so perhaps this was a product issue (it was a
+relatively new product when I got one). The other problem with this card
+is **the cable & connector combination prevents the case from being
+closed**. So you would need to replace the connectors on the daughter
+board with their right-angle equivalents. Cost is about $17 to $21 from
+various eBay or Aliexpress vendors.
+
+</div>
 
 I would like to know if there are other working cards.
 
