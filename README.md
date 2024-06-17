@@ -62,14 +62,14 @@ I would like to know if there are other working cards.
 
 Also included is:
 
-<div class="model" data-name="Filler" data-left="wyse-filler.stl" data-left-icon="wyse-filler.icon.png">
+<div class="model" data-name="Filler" data-left="wyse-filler.stl" data-left-icon="wyse-filler.icon.png"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-filler.stl" target="_blank" title="View Filler Model"><img src="../media/media/wyse-filler.icon.png" alt="Filler Model" width="96" height="96" /></a></td><td>
 
 ### Filler
 
 This is a simple *blank* that blocks off the empty I/O-option slot and
 installs like an adapter.
 
-</div>
+</td></tr></tbody></table></div>
 
 ## Source
 
