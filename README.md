@@ -12,7 +12,7 @@ in the 5070 case.
 There is support for three different M.2 ethernet adapters (**N.B.**: I've only
 gotten the first two to work):
 
-<div class="model" data-name="Commell Adapter" data-left="wyse-commell-adapter.stl" data-right="commell-view-interior.jpg">
+<div class="model" data-name="Commell Adapter" data-left="wyse-commell-adapter.stl" data-right="commell-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-commell-adapter.stl" target="_blank" title="View Commell Adapter Model"><img src="../media/media/wyse-commell-adapter.stl" alt="Commell Adapter Model" width="96" height="96" /></a></td><td>
 
 ### :heavy\_check\_mark: **commell**: [Commell M2-210 A-/E-Key Gigabit Ethernet Card](http://www.commell.com.tw/Product/Peripheral/M.2%20%28NGFF%29%20card/M2-210.htm)
 
@@ -22,9 +22,9 @@ about half way along the length. I also filed down the solder tabs on the
 ethernet jack at the bottom of the PCB. Cost was about $45 + shipping from one
 of their [distributors](http://www.commell.com.tw/distributor/Distributor.htm).
 
-</div>
+</td><td align="center" width="128" height="128"><a href="../media/media/commell-view-interior.jpg" target="_blank" title="View Commell Adapter Installed"><img src="../media/media/commell-view-interior.jpg" alt="Commell Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
 
-<div class="model" data-name="Winyao Adapter" data-left="wyse-winyao-adapter.stl" data-right="winyao-view-interior.jpg">
+<div class="model" data-name="Winyao Adapter" data-left="wyse-winyao-adapter.stl" data-right="winyao-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-winyao-adapter.stl" target="_blank" title="View Winyao Adapter Model"><img src="../media/media/wyse-winyao-adapter.stl" alt="Winyao Adapter Model" width="96" height="96" /></a></td><td>
 
 ### :heavy\_check\_mark: **winyao**: Winyao 8111-M2-C & 8125-M2-C / [DFRobot FIT0798](https://www.dfrobot.com/product-2318.html) / Generic RTL8111F & RTL8125B
 
@@ -41,9 +41,9 @@ With FreeBSD-based distributions (including pfSense, OPNsense, etc.) count on in
 the **realtek-re-kmod** [(google)](https://www.google.com/search?q=realtek-re-kmod) driver package instead of
 using the OS' native driver.
 
-</div>
+</td><td align="center" width="128" height="128"><a href="../media/media/winyao-view-interior.jpg" target="_blank" title="View Winyao Adapter Installed"><img src="../media/media/winyao-view-interior.jpg" alt="Winyao Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
 
-<div class="model" data-name="IOCREST Adapter" data-left="wyse-iocrest-adapter.stl">
+<div class="model" data-name="IOCREST Adapter" data-left="wyse-iocrest-adapter.stl"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-iocrest-adapter.stl" target="_blank" title="View IOCREST Adapter Model"><img src="../media/media/wyse-iocrest-adapter.stl" alt="IOCREST Adapter Model" width="96" height="96" /></a></td><td>
 
 ### :x: **iocrest**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178)
 
@@ -56,7 +56,7 @@ closed**. So you would need to replace the connectors on the daughter
 board with their right-angle equivalents. Cost is about $17 to $21 from
 various eBay or Aliexpress vendors.
 
-</div>
+</td></tr></tbody></table></div>
 
 I would like to know if there are other working cards.
 
