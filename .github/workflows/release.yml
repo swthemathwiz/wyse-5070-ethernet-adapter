@@ -12,7 +12,7 @@ jobs:
     - name: Build
       uses: swthemathwiz/openscad-actions/build@v1
     - name: Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         body: New Release
         files: '*.stl'
