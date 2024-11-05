@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2021.
+// Copyright (c) Stewart H. Whitman, 2021-2024.
 //
 // File:    winyao-nic.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -55,7 +55,8 @@ function _nic_get_shield_right_hole() = [ nic_get_shield_size().x/2+12.5, 8.5-ni
 function nic_get_shield_holes() = [ _nic_get_shield_left_hole(), _nic_get_shield_right_hole() ];
 // shield hole diameter (measures about 2.8mm)
 function nic_get_shield_hole_diameter() = 2.8;
-function nic_get_shield_center_pos() = [ nic_get_pcb_size().x/2, nic_get_shield_size().z/2-nic_get_shield_thickness() ];
+function nic_get_shield_z() = -nic_get_shield_thickness();
+function nic_get_shield_center_pos() = [ nic_get_pcb_size().x/2, nic_get_shield_size().z/2+nic_get_shield_z() ];
 
 // ethernet position is equidistant from left or right side (about 7.5mm)
 function _nic_get_ethernet_left_pos() = (nic_get_pcb_size().x - nic_get_ethernet_size().x)/2;
@@ -107,8 +108,8 @@ module nic(transparency=1.0,center=true,with_shield=true) {
 
   module shield() {
     shield_holder    = [ pcb_cutout.x, nic_get_pcb_size().y-pcb_cutout.y, shield_thickness ];
-    shield_left_pos  = [ (nic_get_pcb_size().x-nic_get_shield_size().x)/2, nic_get_pcb_size().y, -shield_thickness ];
-    shield_right_pos = [ shield_left_pos.x+nic_get_shield_size().x, nic_get_pcb_size().y, -shield_thickness ];
+    shield_left_pos  = [ (nic_get_pcb_size().x-nic_get_shield_size().x)/2, nic_get_pcb_size().y, nic_get_shield_z() ];
+    shield_right_pos = [ shield_left_pos.x+nic_get_shield_size().x, nic_get_pcb_size().y, nic_get_shield_z() ];
     difference() {
       color( "silver", transparency )
         {

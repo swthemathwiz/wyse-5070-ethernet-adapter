@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020-2023.
+// Copyright (c) Stewart H. Whitman, 2020-2024.
 //
 // File:    iocrest-nic.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -54,6 +54,7 @@ function nic_get_shield_thickness() = 0;
 function nic_get_shield_size() = [];
 function nic_get_shield_hole_diameter() = 0;
 function nic_get_shield_holes() = [];
+function nic_get_shield_z() = 0;
 function nic_get_shield_center_pos() = [ 0, 0 ];
 
 // ethernet is equidistant from left or right side (about 7.5mm)
