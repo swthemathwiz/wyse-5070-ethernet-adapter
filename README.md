@@ -68,7 +68,7 @@ closed**. So you would need to replace the connectors on the daughter
 board with their right-angle equivalents. Cost is about $17 to $21 from
 various eBay or Aliexpress vendors.
 
-</td></tr></tbody></table></div>
+</td><td align="center" width="128" height="128"><a href="../media/media/iocrest-view-interior.jpg" target="_blank" title="View IOCREST Adapter Installed"><img src="../media/media/iocrest-view-interior.jpg" alt="IOCREST Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
 
 I would like to know if there are other working cards.
 
