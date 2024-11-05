@@ -9,8 +9,8 @@ in the 5070 case.
 
 ## Models and Ethernet Adapter Variations
 
-There is support for three different M.2 ethernet adapters (**N.B.**: I've only
-gotten the first two to work):
+There is support for four different M.2 ethernet adapters (**N.B.**: I've only
+gotten the first three to work):
 
 <div class="model" data-name="Winyao Adapter" data-left="wyse-winyao-adapter.stl" data-left-icon="wyse-winyao-adapter.icon.png" data-right="winyao-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-winyao-adapter.stl" target="_blank" title="View Winyao Adapter Model"><img src="../media/media/wyse-winyao-adapter.icon.png" alt="Winyao Adapter Model" width="96" height="96" /></a></td><td>
 
@@ -30,6 +30,18 @@ the **realtek-re-kmod** [(google)](https://www.google.com/search?q=realtek-re-km
 using the OS' native driver.
 
 </td><td align="center" width="128" height="128"><a href="../media/media/winyao-view-interior.jpg" target="_blank" title="View Winyao Adapter Installed"><img src="../media/media/winyao-view-interior.jpg" alt="Winyao Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
+
+<div class="model" data-name="Youyeetoo Adapter" data-left="wyse-youyeetoo-adapter.stl" data-left-icon="wyse-youyeetoo-adapter.icon.png" data-right="youyeetoo-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-youyeetoo-adapter.stl" target="_blank" title="View Youyeetoo Adapter Model"><img src="../media/media/wyse-youyeetoo-adapter.icon.png" alt="Youyeetoo Adapter Model" width="96" height="96" /></a></td><td>
+
+### :heavy\_check\_mark: **youyeetoo**: [Youyeetoo I225-V IIO-ALAN4 A-/E-Key Gigabit Ethernet Card](https://www.youyeetoo.com/products/25g-m2-ethernet-card?VariantsId=12274)
+
+This is an Intel I225-V B3 2230 M.2 A+E card that fits in the Wifi/2nd Ethernet
+slot of the 5070. I used the 15 cm cable and it was more than long enough. Package
+includes M.2 screw that fits the 5070. You can reuse the shield mounting hardware to secure
+the daughterboard after removing the shield. Cost was about $20 including shipping from
+[Aliexpress](https://www.aliexpress.com/item/3256807086898768.html).
+
+</td><td align="center" width="128" height="128"><a href="../media/media/youyeetoo-view-interior.jpg" target="_blank" title="View Youyeetoo Adapter Installed"><img src="../media/media/youyeetoo-view-interior.jpg" alt="Youyeetoo Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
 
 <div class="model" data-name="Commell Adapter" data-left="wyse-commell-adapter.stl" data-left-icon="wyse-commell-adapter.icon.png" data-right="commell-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-commell-adapter.stl" target="_blank" title="View Commell Adapter Model"><img src="../media/media/wyse-commell-adapter.icon.png" alt="Commell Adapter Model" width="96" height="96" /></a></td><td>
 
@@ -113,7 +125,8 @@ To install the card in the adapter:
    have 3 DPs) you can easily use one screw on the lower side and a hex nut on
    the inside. With the **winyao**, which has a low-profile ethernet jack, I was
    able to put two M3x6mm thin (*wafer*) head machine screws from the bottom up
-   with hex nuts inside the adapter.
+   with hex nuts inside the adapter. I reused the the manufacturer's screws
+   for the **youyeetoo**.
 
 3. Install the cable connecting the daughter board to the M.2 card (before
    putting the adapter into the 5070).

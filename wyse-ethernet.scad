@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020-2023.
+// Copyright (c) Stewart H. Whitman, 2020-2024.
 //
 // File:    wyse-ethernet.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -11,6 +11,7 @@ use <wyse-blank.scad>
 //use <iocrest-nic.scad>
 //use <commell-nic.scad>
 //use <winyao-nic.scad>
+//use <youyeetoo-nic.scad>
 include <smidge.scad>
 
 // Show the NIC inserted in the adapter (debugging)
@@ -37,14 +38,28 @@ support_thickness = (nic_kind() == "iocrest") ? 0.8 : 1.6;
 // Baffle thickness (extra for shield indent)
 baffle_thickness = !use_shield_mounting ? 1.6 : 1.6 + nic_get_shield_thickness();
 
-// Baffle height (can decrease for smaller ethernet jack heights)
-baffle_height = (nic_kind() == "winyao") ? 16.2 : 18.0;
+// Baffle height (can decrease for lower profile ethernet jacks/pcb thickness)
+baffle_height = (nic_kind() == "winyao") ? 16.2 :
+                  (nic_kind() == "youyeetoo") ? 17.6 :
+                    18.0;
 
 // Extra depth (behind the end of the wings)
 extra_depth = max( 0, (nic_get_pcb_size().y+6.8)-(Wyse_Get_Raw_Depth()-baffle_thickness) );
 
 // Notch at front-bottom of baffle
 front_cut = [ 0.8, Wyse_Get_Floor_Thickness([]) + nic_get_pcb_size().z*0.8 ];
+
+// Rear snap width (positive for center, negative for dual sides, zero for none)
+rear_snap_width = (nic_kind() == "winyao") ? 20 : (nic_kind() == "youyeetoo") ? -5 : 16;
+
+function is_center_rear_snap() = rear_snap_width > 0;
+function is_side_rear_snap() = rear_snap_width < 0;
+
+// Width of handle at rear
+handle_percentage = is_side_rear_snap() ? 33 : is_center_rear_snap() ? 25 : 0;
+
+// Trough round over
+trough_round_over = is_side_rear_snap() ? 1 : 6;
 
 // Config hash
 config = [
@@ -53,23 +68,28 @@ config = [
   ["baffle_height", baffle_height],
   ["support_thickness", support_thickness],
   ["front_cut", front_cut ],
+  ["handle_percentage", handle_percentage ],
+  ["trough_round_over", trough_round_over ],
 ];
 
 // Trough indent from sides [front,rear,left,right] to support PCB w/o touching solder points
 trough_indent_sizes = (nic_kind() == "iocrest") ? [ [1.5, 7.5, 1.5, 1.5] ] :
                        (nic_kind() == "commell") ? [ [1.6, 7.2, 4.4, 4.4] ] :
-                        (nic_kind() == "winyao")  ? (use_shield_mounting ? [ [ 0.0, 11.0, 3.9, 3.9], [ 0.0, 7.0, 9.0, 9.0] ] :
-                                                                           [ [ 1.6, 11.0, 4.2, 4.2], [ 1.6, 7.0, 9.0, 9.0] ] )
+                        (nic_kind() == "youyeetoo") ? [ [1.4, 7.5, 5.4, 5.4], [ 29, 7.5, 3, 3 ] ] :
+                         (nic_kind() == "winyao")  ? (use_shield_mounting ? [ [ 0.0, 11.0, 3.9, 3.9], [ 0.0, 7.0, 9.0, 9.0] ] :
+                                                                            [ [ 1.6, 11.0, 4.2, 4.2], [ 1.6, 7.0, 9.0, 9.0] ] )
                                                   : undef; // customized per NIC PCB/mounting
-
-// Rear snap width
-rear_snap_width = (nic_kind() == "winyao") ? 20 : 16;
 
 // Side guide width
 side_guide_width = 1;
 
-// Use side guides when PCB smaller than interior width
-use_side_guides = (nic_get_pcb_size().x < (Wyse_Get_Interior_Width(config) - side_guide_width*2));
+// Percentage of side to guide
+side_guide_percentage = is_side_rear_snap() ? 60 : 75;
+
+// Has side guides when configured and PCB smaller than interior width
+function has_side_guides() = side_guide_width > 0 &&
+                               side_guide_percentage > 0 &&
+                                 (nic_get_pcb_size().x < (Wyse_Get_Interior_Width(config) - side_guide_width*2));
 
 // midfront_of:
 //
@@ -93,7 +113,7 @@ ethernet_pos_yz = [ midfront_of( nic_get_ethernet_center_pos() ).x, _nic_get_eth
 ethernet_size_yz = [ nic_get_ethernet_size().x, nic_get_ethernet_size().z ];
 
 // Shield position (assumes centered left<->right on ethernet port) from middle of baffle and bottom of adapter floor
-shield_pos_yz = [ midfront_of( nic_get_shield_center_pos() ).x, -nic_get_shield_thickness() ];
+shield_pos_yz = [ midfront_of( nic_get_shield_center_pos() ).x, nic_get_shield_z() ];
 
 module ethernet(pos,size) {
   // Use the same tolerance all the way around
@@ -130,8 +150,8 @@ module expand_shield_cutout(size,tolerance) {
 
 module shield_cutout(pos,size) {
   Wyse_Baffle_Indent(config, pos)
-   translate( [-size.x/2, 0, 0] )
-     expand_shield_cutout( size, max(tolerance)/2 );
+  translate( [-size.x/2, 0, 0] )
+    expand_shield_cutout( size, max(tolerance)/2 );
 } // end shield_cutout
 
 module mount(pos,simple=false) {
@@ -148,12 +168,26 @@ module latches() {
 
   // Rear (snap-fit)
   //
-  // Just behind the PCB board, in the center.
+  // For center snap, positioned in center just behind PCB.
   //
-  if( rear_snap_width != 0 ) {
+  if( is_center_rear_snap() ) {
     rear_pos = midfront_of( [ nic_get_pcb_size().x/2, use_shield_mounting ? -tolerance.y/2 : -tolerance.y, z_height ] );
 
     Wyse_Latch( config, rear_pos, rear_snap_width, 1.00, style="tang2" );
+  }
+  //
+  // For dual side snaps (negative value width), positioned
+  // 1 mm from left/right sides just behind PCB.
+  //
+  else if( is_side_rear_snap() ) {
+    snap_width  = abs( rear_snap_width );
+    snap_offset = 1+snap_width/2;
+
+    rear_pos1 = midfront_of( [ snap_offset, use_shield_mounting ? -tolerance.y : -2*tolerance.y, z_height ] );
+    rear_pos2 = midfront_of( [ nic_get_pcb_size().x-snap_offset, use_shield_mounting ? -tolerance.y : -2*tolerance.y, z_height ] );
+
+    Wyse_Latch( config, rear_pos1, snap_width, 1.00, style="tang2" );
+    Wyse_Latch( config, rear_pos2, snap_width, 1.00, style="tang2" );
   }
 
   // Front (non-moving)
@@ -188,10 +222,10 @@ module latches() {
   //
   // Rails around sides of PCB if needed.
   //
-  if( use_side_guides ) {
+  if( has_side_guides() ) {
     corner_distance = use_shield_mounting ? max( nic_get_shield_size().x, nic_get_pcb_size().x ) : nic_get_pcb_size().x;
     corner_position = (corner_distance+tolerance.x)/2;
-    guide_size      = [ side_guide_width, nic_get_pcb_size().y*0.75, nic_get_pcb_size().z+2*tolerance.z ];
+    guide_size      = [ side_guide_width, nic_get_pcb_size().y*side_guide_percentage/100, nic_get_pcb_size().z+2*tolerance.z ];
 
     Wyse_Guide( config, [ -corner_position, nic_get_pcb_size().y*(use_shield_mounting ? 0 : 0.125) ], guide_size );
     Wyse_Guide( config, [ +corner_position, nic_get_pcb_size().y*(use_shield_mounting ? 0 : 0.125) ], guide_size );

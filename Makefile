@@ -1,5 +1,5 @@
 #
-# Copyright (c) Stewart Whitman, 2020-2023.
+# Copyright (c) Stewart Whitman, 2020-2024.
 #
 # File:    Makefile
 # Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -26,6 +26,7 @@ BUILDS = \
 	wyse-commell-adapter.scad \
 	wyse-winyao-adapter.scad \
 	wyse-iocrest-adapter.scad \
+	wyse-youyeetoo-adapter.scad \
 	wyse-filler.scad
 
 EXTRAS = \
