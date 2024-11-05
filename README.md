@@ -55,7 +55,7 @@ of their [distributors](http://www.commell.com.tw/distributor/Distributor.htm).
 
 </td><td align="center" width="128" height="128"><a href="../media/media/commell-view-interior.jpg" target="_blank" title="View Commell Adapter Installed"><img src="../media/media/commell-view-interior.jpg" alt="Commell Adapter Installed" width="96" height="96" /></a></td></tr></tbody></table></div>
 
-<div class="model" data-name="IOCREST Adapter" data-left="wyse-iocrest-adapter.stl" data-left-icon="wyse-iocrest-adapter.icon.png"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-iocrest-adapter.stl" target="_blank" title="View IOCREST Adapter Model"><img src="../media/media/wyse-iocrest-adapter.icon.png" alt="IOCREST Adapter Model" width="96" height="96" /></a></td><td>
+<div class="model" data-name="IOCREST Adapter" data-left="wyse-iocrest-adapter.stl" data-left-icon="wyse-iocrest-adapter.icon.png" data-right="iocrest-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-iocrest-adapter.stl" target="_blank" title="View IOCREST Adapter Model"><img src="../media/media/wyse-iocrest-adapter.icon.png" alt="IOCREST Adapter Model" width="96" height="96" /></a></td><td>
 
 ### :x: **iocrest**: [IOCREST O-M2F8111H-GLAN](http://www.iocrest.com/index.php?id=2178)
 
