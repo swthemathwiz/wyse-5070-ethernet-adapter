@@ -33,7 +33,7 @@ using the OS' native driver.
 
 <div class="model" data-name="Youyeetoo Adapter" data-left="wyse-youyeetoo-adapter.stl" data-left-icon="wyse-youyeetoo-adapter.icon.png" data-right="youyeetoo-view-interior.jpg"><!-- expanded by annotate-model --><table align="center" width="100%"><tbody><tr width="100%"><td align="center" width="128" height="128"><a href="../media/media/wyse-youyeetoo-adapter.stl" target="_blank" title="View Youyeetoo Adapter Model"><img src="../media/media/wyse-youyeetoo-adapter.icon.png" alt="Youyeetoo Adapter Model" width="96" height="96" /></a></td><td>
 
-### :heavy\_check\_mark: **youyeetoo**: [Youyeetoo I225-V IIO-ALAN4 A-/E-Key Gigabit Ethernet Card](https://www.youyeetoo.com/products/25g-m2-ethernet-card?VariantsId=12274)
+### :heavy\_check\_mark: **youyeetoo**: [Youyeetoo I225-V IIO-ALAN4 A-/E-Key 2.5G Ethernet Card](https://www.youyeetoo.com/products/25g-m2-ethernet-card?VariantsId=12274)
 
 This is an Intel I225-V B3 2230 M.2 A+E card that fits in the Wifi/2nd Ethernet
 slot of the 5070. I used the 15 cm cable and it was more than long enough. Package
