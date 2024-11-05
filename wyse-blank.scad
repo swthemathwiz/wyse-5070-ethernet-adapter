@@ -1,5 +1,5 @@
 //
-// Copyright (c) Stewart H. Whitman, 2020-2021.
+// Copyright (c) Stewart H. Whitman, 2020-2024.
 //
 // File:    wyse-blank.scad
 // Project: Dell Wyse 5070 2nd Ethernet Adapter Adapter
@@ -46,6 +46,9 @@ default_baffle_thickness = 1.6;
 // Front cut size
 default_front_cut = [ default_baffle_thickness/2, default_thickness ];
 
+// Handle percentage of rear
+default_handle_percentage = 25;
+
 // Hash
 default_config = [
   ["thickness", default_thickness],
@@ -56,6 +59,7 @@ default_config = [
   ["round_over", default_round_over],
   ["trough_round_over", default_trough_round_over],
   ["front_cut", default_front_cut],
+  ["handle_percentage", default_handle_percentage],
 ];
 function GV_(config,var) = hash_get_default_hash( config, var, default_config );
 
@@ -221,6 +225,7 @@ module Wyse_Blank( config=[], filler_only=false ) {
   round_over = V_("round_over");
   thickness = V_("thickness");
   front_cut = V_("front_cut");
+  handle_percentage = V_("handle_percentage");
 
   // Total depth
   inner_depth = raw_depth + extra_depth;
@@ -276,12 +281,16 @@ module Wyse_Blank( config=[], filler_only=false ) {
   // Recess thickness is based on there needing at least 1mm to clamp, or recess of 1mm to conceal screw head
   ear_hole_recess_thickness = upside_down ? 0 : ((ear_thickness > 2) ? 1 : ear_thickness-1);
 
+  // Maximum side slant
+  maximum_slant_depth = 8;
+
   module base() {
     color("gray") cube( [inner_width,inner_depth,thickness] );
   } // end base
 
   module handle() {
-    color("gray") translate( [inner_width/2,inner_depth-inner_width/8,0] ) cylinder( r=inner_width/4, h=thickness );
+    if( handle_percentage > 0 )
+      color("gray") translate( [inner_width/2,inner_depth-inner_width/8,0] ) cylinder( r=inner_width*handle_percentage/100, h=thickness );
   } // end handle
 
   module baffle() {
@@ -294,8 +303,10 @@ module Wyse_Blank( config=[], filler_only=false ) {
 	color("brown") right_triangle( inner_depth-baffle_thickness, baffle_height, support_thickness );
       else {
 	color("brown") cube( [support_thickness, raw_depth-baffle_thickness, baffle_height] );
-        if( inner_depth-raw_depth > round_over )
-	  translate( [0,raw_depth-baffle_thickness,0] ) color("brown") right_triangle( inner_depth-raw_depth-round_over, baffle_height, support_thickness );
+
+        slanted_depth = min( maximum_slant_depth, max( 0, inner_depth-raw_depth-round_over ) );
+        if( slanted_depth > 0 )
+	  translate( [0,raw_depth-baffle_thickness,0] ) color("brown") right_triangle( slanted_depth, baffle_height, support_thickness );
       }
     }
   } // end support
